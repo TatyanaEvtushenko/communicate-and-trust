@@ -1,4 +1,5 @@
 using CAT.Extensions;
+using CAT.MachineLearningLayer.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,9 @@ namespace CAT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddOptions();
+            services.Configure<CascadeOption>(Configuration.GetSection("Cascades"));
 
             services.AddProjectRepositories();
             services.AddProjectUtils();

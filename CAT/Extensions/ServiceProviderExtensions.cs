@@ -15,7 +15,7 @@ namespace CAT.Extensions
 
         public static void AddProjectUtils(this IServiceCollection services)
         {
-            services.AddScoped<IEmotionDetector, TestEmotionDetector>();
+            services.AddScoped<IEmotionDetector, EmotionDetector>();
         }
 
         public static void AddProjectRepositories(this IServiceCollection services)
