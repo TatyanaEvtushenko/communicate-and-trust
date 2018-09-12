@@ -1,5 +1,4 @@
-using CAT.BusinessLayer.Services.SmileServices;
-using CAT.MachineLearningLayer.Detectors.EmotionDetectors;
+using CAT.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -14,18 +13,17 @@ namespace CAT
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
-            var detector = new TestEmotionDetector();
-            var service = new TestSmileService(detector);
-            var emotion = service.DetectEmotion(null);
         }
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddProjectRepositories();
+            services.AddProjectUtils();
+            services.AddProjectServices();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -62,7 +60,6 @@ namespace CAT
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
-
                 spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
