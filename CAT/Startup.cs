@@ -1,6 +1,7 @@
+using CAT.BusinessLayer.Services.SmileServices;
+using CAT.MachineLearningLayer.Detectors.EmotionDetectors;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,10 @@ namespace CAT
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            var detector = new TestEmotionDetector();
+            var service = new TestSmileService(detector);
+            var emotion = service.DetectEmotion(null);
         }
 
         public IConfiguration Configuration { get; }

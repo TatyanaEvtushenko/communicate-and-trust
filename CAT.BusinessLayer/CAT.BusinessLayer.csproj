@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CAT.DataLayer\CAT.DataLayer.csproj" />
+    <ProjectReference Include="..\CAT.MachineLearningLayer\CAT.MachineLearningLayer.csproj" />
+  </ItemGroup>
+
+</Project>
