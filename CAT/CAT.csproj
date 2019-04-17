@@ -25,6 +25,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CAT.BusinessLayer\CAT.BusinessLayer.csproj" />
+    <ProjectReference Include="..\CAT.DataLayer\CAT.DataLayer.csproj" />
+    <ProjectReference Include="..\CAT.MachineLearningLayer\CAT.MachineLearningLayer.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

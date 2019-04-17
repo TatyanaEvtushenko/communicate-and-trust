@@ -1,0 +1,19 @@
+<label for="reg-acc-login" class="text-center">Login</label>
+<input [(ngModel)]="account.login" type="text" id="reg-acc-login" class="form-control" placeholder="test@mail.com">
+
+<label for="reg-acc-email" class="text-center">Email</label>
+<input [(ngModel)]="account.email" type="text" id="reg-acc-email" class="form-control" placeholder="test@mail.com">
+
+<label for="reg-acc-password" class="text-center">Password</label>
+<input [(ngModel)]="account.password" type="password" id="reg-acc-password" class="form-control" placeholder="test@mail.com">
+
+<label for="reg-acc-passw-conf" class="text-center">Password Confirmation</label>
+<input [(ngModel)]="account.confirmedPassword" type="password" id="reg-acc-passw-conf" class="form-control" placeholder="test@mail.com">
+
+<label for="reg-acc-first-name" class="text-center">First Name</label>
+<input [(ngModel)]="account.firstName" type="text" id="reg-acc-first-name" class="form-control" placeholder="test@mail.com">
+
+<label for="reg-acc-second-name" class="text-center">Second Name</label>
+<input [(ngModel)]="account.secondName" type="text" id="reg-acc-second-name" class="form-control" placeholder="test@mail.com">
+
+<button type="button" class="btn btn-primary" (click)="register()">Register</button>
