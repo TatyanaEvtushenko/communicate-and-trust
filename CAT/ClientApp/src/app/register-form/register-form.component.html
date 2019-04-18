@@ -1,5 +1,5 @@
-<label for="reg-acc-login" class="text-center">Login</label>
-<input [(ngModel)]="account.login" type="text" id="reg-acc-login" class="form-control" placeholder="test@mail.com">
+<label for="reg-acc-login" class="text-center">UserName</label>
+<input [(ngModel)]="account.userName" type="text" id="reg-acc-login" class="form-control" placeholder="test@mail.com">
 
 <label for="reg-acc-email" class="text-center">Email</label>
 <input [(ngModel)]="account.email" type="text" id="reg-acc-email" class="form-control" placeholder="test@mail.com">
@@ -15,5 +15,10 @@
 
 <label for="reg-acc-second-name" class="text-center">Second Name</label>
 <input [(ngModel)]="account.secondName" type="text" id="reg-acc-second-name" class="form-control" placeholder="test@mail.com">
+
+<p *ngIf="result != null && result.succeeded">The user was registered!</p>
+<ul *ngIf="result != null && !result.succeeded">
+    <li *ngFor="let error of result.errors">{{error.code}}: {{error.description}}</li>
+</ul>
 
 <button type="button" class="btn btn-primary" (click)="register()">Register</button>

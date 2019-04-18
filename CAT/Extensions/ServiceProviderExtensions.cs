@@ -1,4 +1,6 @@
-﻿using CAT.BusinessLayer.Services.SmileServices;
+﻿using CAT.BusinessLayer.Services.AccountServices;
+using CAT.BusinessLayer.Services.AccountServices.Interfaces;
+using CAT.BusinessLayer.Services.SmileServices;
 using CAT.BusinessLayer.Services.SmileServices.Interfaces;
 using CAT.MachineLearningLayer.Detectors.EmotionDetectors;
 using CAT.MachineLearningLayer.Detectors.EmotionDetectors.Interfaces;
@@ -10,6 +12,7 @@ namespace CAT.Extensions
     {
         public static void AddProjectServices(this IServiceCollection services)
         {
+            services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ISmileService, TestSmileService>();
         }
 
