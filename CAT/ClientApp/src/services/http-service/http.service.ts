@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { SessionStorage } from "../../utils/session-storage";
 
 @Injectable()
 export class HttpService {
@@ -12,11 +13,20 @@ export class HttpService {
   
   post(actionName: string, body: any): Observable<any> {
     let url = this.getDestinationUrl(actionName);
-    return this.http.post(url, body);
+    let options = this.getRequestOptions();
+    return this.http.post(url, body, options);
   }
 
   private getDestinationUrl(actionName: string): string {
     return `/api/${this.controllerName}/${actionName}`;
+  }
+
+  private getRequestOptions() {
+    let token = SessionStorage.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return { 
+      headers: headers
+    };
   }
   
 }

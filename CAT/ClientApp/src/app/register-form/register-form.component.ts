@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterAccount } from '../../models/account/register-account';
 import { AccountService } from '../../services/account-service/account.service';
-import { ActionResult } from '../../models/action-results/action-result';
-import { ActionError } from '../../models/action-results/action-error';
+import { ActionResult } from '../../models/action-results/base/action-result';
 
 @Component({
   selector: 'app-register-form',
@@ -37,5 +36,4 @@ export class RegisterFormComponent implements OnInit {
       }
     );
   }
-
 }

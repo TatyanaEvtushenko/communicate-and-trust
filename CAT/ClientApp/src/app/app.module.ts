@@ -13,6 +13,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { SmileDetectorComponent } from './smile-detector/smile-detector.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { SigninFormComponent } from './signin-form/signin-form.component';
 
 import { AccountService } from '../services/account-service/account.service';
 import { HttpService } from '../services/http-service/http.service';
@@ -26,7 +27,8 @@ import { HttpService } from '../services/http-service/http.service';
     FetchDataComponent,
     AdminPageComponent,
     SmileDetectorComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    SigninFormComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

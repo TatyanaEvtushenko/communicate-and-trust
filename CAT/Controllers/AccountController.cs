@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using CAT.BusinessLayer.Models.Account.ResultModels;
+using CAT.BusinessLayer.Models.Account.ViewModels;
 using CAT.BusinessLayer.Services.AccountServices.Interfaces;
 using CAT.BusinessLayer.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
@@ -21,6 +23,12 @@ namespace CAT.Controllers
         public async Task<IdentityResult> RegisterAccount([FromBody]RegisterAccountViewModel model)
         {
             return await userService.RegisterUser(model);
+        }
+
+        [HttpPost("getToken")]
+        public async Task<TokenResult> GetAccessToken([FromBody]LoginAccountViewModel model)
+        {
+            return await userService.GetAccessToken(model);
         }
     }
 }
