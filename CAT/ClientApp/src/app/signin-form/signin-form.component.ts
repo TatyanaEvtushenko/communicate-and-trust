@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SignInAccount } from '../../models/account/signin-account';
 import { ActionResult } from '../../models/action-results/base/action-result';
 import { AccountService } from '../../services/account-service/account.service';
-import { SessionStorage } from '../../utils/session-storage';
-import { TokenActionResult } from '../../models/action-results/token-action-result';
+import { AuthorizedUserService } from '../../services/authorized-user-service/authorized-user.service';
 
 @Component({
   selector: 'app-signin-form',
@@ -15,7 +14,7 @@ export class SigninFormComponent implements OnInit {
   public account: SignInAccount = new SignInAccount();
   public result: ActionResult;
 
-  constructor(private accountService: AccountService) {
+  constructor(private accountService: AccountService, private userService: AuthorizedUserService) {
   }
 
   ngOnInit() {
@@ -25,7 +24,7 @@ export class SigninFormComponent implements OnInit {
     this.accountService.signIn(this.account).subscribe(
       data => {
         if (data.succeeded) {
-          this.saveUserData(data);
+          this.userService.saveUserData(data);
         }
         this.result = data;
       }, error => {
@@ -40,11 +39,5 @@ export class SigninFormComponent implements OnInit {
         };
       }
     );
-  }
-
-  private saveUserData(data: TokenActionResult) {
-    SessionStorage.saveToken(data.accessToken);
-    SessionStorage.saveUserName(data.userName);
-    SessionStorage.saveRole(data.role);
   }
 }

@@ -14,9 +14,12 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { SmileDetectorComponent } from './smile-detector/smile-detector.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { SigninFormComponent } from './signin-form/signin-form.component';
+import { LoaderComponent } from './loader/loader.component';
 
 import { AccountService } from '../services/account-service/account.service';
 import { HttpService } from '../services/http-service/http.service';
+import { AuthorizedUserService } from '../services/authorized-user-service/authorized-user.service';
+import { AuthFormComponent } from './auth-form/auth-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { HttpService } from '../services/http-service/http.service';
     AdminPageComponent,
     SmileDetectorComponent,
     RegisterFormComponent,
-    SigninFormComponent
+    SigninFormComponent,
+    LoaderComponent,
+    AuthFormComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,7 +49,8 @@ import { HttpService } from '../services/http-service/http.service';
   ],
   providers: [
     HttpService,
-    AccountService
+    AccountService,
+    AuthorizedUserService
   ],
   bootstrap: [AppComponent]
 })

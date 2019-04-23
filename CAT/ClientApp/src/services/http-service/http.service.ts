@@ -11,6 +11,12 @@ export class HttpService {
   constructor(private http: HttpClient) {    
   }
   
+  get(actionName: string): Observable<any> {
+    let url = this.getDestinationUrl(actionName);
+    let options = this.getRequestOptions();
+    return this.http.get(url, options);
+  }
+  
   post(actionName: string, body: any): Observable<any> {
     let url = this.getDestinationUrl(actionName);
     let options = this.getRequestOptions();

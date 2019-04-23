@@ -9,7 +9,7 @@ using CAT.BusinessLayer.Utils.Tokens;
 using CAT.BusinessLayer.ViewModels.Account;
 using CAT.DataLayer.Models;
 using CAT.DataLayer.Models.Enums;
-using CAT.DataLayer.Repositories.BaseRepositories.Interfaces;
+using CAT.DataLayer.Repositories.DatabaseRepositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
 namespace CAT.BusinessLayer.Services.AccountServices
@@ -54,12 +54,20 @@ namespace CAT.BusinessLayer.Services.AccountServices
             {
                 return new TokenResult(null);
             }
-            user.AvailabilityStatus = UserAvailabilityStatus.Online;
-            userRepository.Update(user);
+
+            UpdateUserStatus(user, UserAvailabilityStatus.Online);
             var userRole = await GetFirstUserRole(user);
             var identity = GetIdentity(user, userRole);
             var token = TokenGenerator.GenerateSecurityToken(identity);
             return new TokenResult(user, userRole, token);
+        }
+
+        public async Task SignOut()
+        {
+            var claims = signInManager.Context.User;
+            var user = userRepository.GetFirst(x => x.UserName == claims.Identity.Name);
+            UpdateUserStatus(user, UserAvailabilityStatus.Offline);
+            await signInManager.SignOutAsync();
         }
 
         private async Task<User> GetUserByUserNameOrEmail(LoginAccountViewModel userInfo)
@@ -84,6 +92,12 @@ namespace CAT.BusinessLayer.Services.AccountServices
             var claimsIdentity = new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
                 ClaimsIdentity.DefaultRoleClaimType);
             return claimsIdentity;
+        }
+
+        private void UpdateUserStatus(User user, UserAvailabilityStatus status)
+        {
+            user.AvailabilityStatus = status;
+            userRepository.Update(user);
         }
     }
 }

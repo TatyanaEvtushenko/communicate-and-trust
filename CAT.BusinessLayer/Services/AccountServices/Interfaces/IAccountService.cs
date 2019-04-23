@@ -11,5 +11,7 @@ namespace CAT.BusinessLayer.Services.AccountServices.Interfaces
         Task<IdentityResult> RegisterUser(RegisterAccountViewModel userInfo);
 
         Task<TokenResult> GetAccessToken(LoginAccountViewModel userInfo);
+
+        Task SignOut();
     }
 }

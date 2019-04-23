@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+/* $cat-light: #e7dfdd;
+$cat-black: #514e51;
+$cat-light-bright: #f2c38b;
+$cat-bright: #eda85e; */
+
+body {
+    background-color: #e7dfdd !important;
+}
+
+/* navbar */
+
+.navbar-inverse {
+    background-color: #514e51 !important;
+    border-color: #514e51 !important;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: white !important;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    background-color: #f2c38b !important;
+    color: white !important;
+}
+
+li.link-active a, li.link-active a:hover, li.link-active a:focus {
+    background-color: #eda85e !important;
+    color: white !important;
+}

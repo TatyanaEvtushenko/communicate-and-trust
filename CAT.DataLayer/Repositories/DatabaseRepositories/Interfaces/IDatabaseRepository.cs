@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CAT.DataLayer.Repositories.BaseRepositories.Interfaces
+namespace CAT.DataLayer.Repositories.DatabaseRepositories.Interfaces
 {
     public interface IDatabaseRepository<T>
     {

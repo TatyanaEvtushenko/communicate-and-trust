@@ -6,6 +6,7 @@
                 <span class='icon-bar'></span>
                 <span class='icon-bar'></span>
                 <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
             </button>
             <a class='navbar-brand' [routerLink]='["/"]'>CAT</a>
         </div>
@@ -30,6 +31,11 @@
                 <li [routerLinkActive]='["link-active"]'>
                     <a [routerLink]='["/admin-page"]' (click)='collapse()'>
                         <span class='glyphicon glyphicon-th-list'></span> Admin
+                    </a>
+                </li>
+                <li>
+                    <a (click)='signOut()'>
+                        <span class='glyphicon glyphicon-th-list'></span> Sign Out
                     </a>
                 </li>
             </ul>

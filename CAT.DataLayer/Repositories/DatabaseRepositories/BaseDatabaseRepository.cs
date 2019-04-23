@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CAT.DataLayer.Contextes;
-using CAT.DataLayer.Repositories.BaseRepositories.Interfaces;
+using CAT.DataLayer.Repositories.DatabaseRepositories.Interfaces;
 
 namespace CAT.DataLayer.Repositories.DatabaseRepositories
 {

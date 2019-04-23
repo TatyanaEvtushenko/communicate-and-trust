@@ -21,4 +21,8 @@ export class AccountService {
     return this.http.post('getToken', user);
   }
 
+  signOut(): Observable<TokenActionResult> {
+    return this.http.get('signOut');
+  }
+
 }
