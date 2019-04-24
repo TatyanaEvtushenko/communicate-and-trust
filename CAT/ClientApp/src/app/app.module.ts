@@ -12,6 +12,14 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { SmileDetectorComponent } from './smile-detector/smile-detector.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
+import { SigninFormComponent } from './signin-form/signin-form.component';
+import { LoaderComponent } from './loader/loader.component';
+
+import { AccountService } from '../services/account-service/account.service';
+import { HttpService } from '../services/http-service/http.service';
+import { AuthorizedUserService } from '../services/authorized-user-service/authorized-user.service';
+import { AuthFormComponent } from './auth-form/auth-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +29,11 @@ import { SmileDetectorComponent } from './smile-detector/smile-detector.componen
     CounterComponent,
     FetchDataComponent,
     AdminPageComponent,
-    SmileDetectorComponent
+    SmileDetectorComponent,
+    RegisterFormComponent,
+    SigninFormComponent,
+    LoaderComponent,
+    AuthFormComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -35,7 +47,11 @@ import { SmileDetectorComponent } from './smile-detector/smile-detector.componen
     ]),
     WebcamModule
   ],
-  providers: [],
+  providers: [
+    HttpService,
+    AccountService,
+    AuthorizedUserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

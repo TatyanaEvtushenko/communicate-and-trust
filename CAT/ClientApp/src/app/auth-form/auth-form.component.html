@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <ul class="panel-title nav nav-tabs nav-justified">
+      <li role="presentation" [ngClass]="{active: isSignInForm}" (click)="selectSignInForm()">
+        <a href="#">Sign In</a>
+      </li>
+      <li role="presentation" [ngClass]="{active: !isSignInForm}" (click)="selectRegisterForm()">
+        <a href="#">Register</a>
+      </li>
+    </ul>
+  </div>
+  <div class="panel-body">
+    <app-signin-form *ngIf='isSignInForm'></app-signin-form>
+    <app-register-form *ngIf='!isSignInForm'></app-register-form>
+  </div>
+</div>

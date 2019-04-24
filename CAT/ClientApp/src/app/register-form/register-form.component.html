@@ -1,0 +1,48 @@
+<form>
+    <div class="form-group">
+        <label for="reg-acc-login" class="text-center">User name</label>
+        <input [(ngModel)]="account.userName" type="text" id="reg-acc-login" class="form-control"
+            placeholder="User name">
+    </div>
+    <div class="form-group">
+        <label for="reg-acc-email" class="text-center">Email</label>
+        <input [(ngModel)]="account.email" type="text" id="reg-acc-email" class="form-control" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="reg-acc-password" class="text-center">Password</label>
+        <input [(ngModel)]="account.password" type="password" id="reg-acc-password" class="form-control"
+            placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="reg-acc-passw-conf" class="text-center">Password Confirmation</label>
+        <input [(ngModel)]="account.confirmedPassword" type="password" id="reg-acc-passw-conf" class="form-control"
+            placeholder="Password">
+    </div>
+    <div class="form-group">
+
+        <label for="reg-acc-first-name" class="text-center">First Name</label>
+        <input [(ngModel)]="account.firstName" type="text" id="reg-acc-first-name" class="form-control"
+            placeholder="First name">
+    </div>
+    <div class="form-group">
+        <label for="reg-acc-second-name" class="text-center">Second Name</label>
+        <input [(ngModel)]="account.secondName" type="text" id="reg-acc-second-name" class="form-control"
+            placeholder="Second name">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile">
+        <p class="help-block">Example block-level help text here.</p>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> Check me out
+        </label>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="register()">Register</button>
+</form>
+
+<p *ngIf="result != null && result.succeeded">The user was registered!</p>
+<ul *ngIf="result != null && !result.succeeded">
+    <li *ngFor="let error of result.errors">{{error.code}}: {{error.description}}</li>
+</ul>
