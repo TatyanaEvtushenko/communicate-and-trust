@@ -5,4 +5,5 @@ export class RegisterAccount {
     confirmedPassword: string;
     firstName: string;
     secondName: string;
+    avatarImage: any;
 }

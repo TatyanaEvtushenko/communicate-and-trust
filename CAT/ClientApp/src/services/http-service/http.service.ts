@@ -29,7 +29,7 @@ export class HttpService {
 
   private getRequestOptions() {
     let token = SessionStorage.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'multipart/form-data');
     return { 
       headers: headers
     };

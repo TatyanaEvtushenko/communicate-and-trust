@@ -2,7 +2,6 @@
 using CAT.BusinessLayer.Models.Account.ResultModels;
 using CAT.BusinessLayer.Models.Account.ViewModels;
 using CAT.BusinessLayer.Services.AccountServices.Interfaces;
-using CAT.BusinessLayer.ViewModels.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +20,7 @@ namespace CAT.Controllers
         }
 
         [HttpPost("register")]
+        [Consumes("multipart/form-data")]
         public async Task<IdentityResult> RegisterAccount([FromBody]RegisterAccountViewModel model)
         {
             return await userService.RegisterUser(model);

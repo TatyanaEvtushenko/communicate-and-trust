@@ -6,7 +6,6 @@ using CAT.BusinessLayer.Models.Account.ResultModels;
 using CAT.BusinessLayer.Models.Account.ViewModels;
 using CAT.BusinessLayer.Services.AccountServices.Interfaces;
 using CAT.BusinessLayer.Utils.Tokens;
-using CAT.BusinessLayer.ViewModels.Account;
 using CAT.DataLayer.Models;
 using CAT.DataLayer.Models.Enums;
 using CAT.DataLayer.Repositories.DatabaseRepositories.Interfaces;

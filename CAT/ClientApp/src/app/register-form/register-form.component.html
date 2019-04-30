@@ -1,44 +1,45 @@
-<form>
+<form enctype="multipart/form-data">
     <div class="form-group">
-        <label for="reg-acc-login" class="text-center">User name</label>
-        <input [(ngModel)]="account.userName" type="text" id="reg-acc-login" class="form-control"
-            placeholder="User name">
+        <label for="reg-acc-userName" class="text-center">User name</label>
+        <input [(ngModel)]="account.userName" type="text" id="reg-acc-userName" name="reg-acc-userName"
+            class="form-control" placeholder="User name">
     </div>
     <div class="form-group">
         <label for="reg-acc-email" class="text-center">Email</label>
-        <input [(ngModel)]="account.email" type="text" id="reg-acc-email" class="form-control" placeholder="Email">
+        <input [(ngModel)]="account.email" type="text" id="reg-acc-email" name="reg-acc-email" class="form-control"
+            placeholder="Email">
     </div>
     <div class="form-group">
         <label for="reg-acc-password" class="text-center">Password</label>
-        <input [(ngModel)]="account.password" type="password" id="reg-acc-password" class="form-control"
-            placeholder="Password">
+        <input [(ngModel)]="account.password" type="password" id="reg-acc-password" name="reg-acc-password"
+            class="form-control" placeholder="Password">
     </div>
     <div class="form-group">
         <label for="reg-acc-passw-conf" class="text-center">Password Confirmation</label>
-        <input [(ngModel)]="account.confirmedPassword" type="password" id="reg-acc-passw-conf" class="form-control"
-            placeholder="Password">
+        <input [(ngModel)]="account.confirmedPassword" type="password" id="reg-acc-passw-conf" name="reg-acc-passw-conf"
+            class="form-control" placeholder="Password">
     </div>
     <div class="form-group">
 
         <label for="reg-acc-first-name" class="text-center">First Name</label>
-        <input [(ngModel)]="account.firstName" type="text" id="reg-acc-first-name" class="form-control"
-            placeholder="First name">
+        <input [(ngModel)]="account.firstName" type="text" id="reg-acc-first-name" name="reg-acc-first-name"
+            class="form-control" placeholder="First name">
     </div>
     <div class="form-group">
         <label for="reg-acc-second-name" class="text-center">Second Name</label>
-        <input [(ngModel)]="account.secondName" type="text" id="reg-acc-second-name" class="form-control"
-            placeholder="Second name">
+        <input [(ngModel)]="account.secondName" type="text" id="reg-acc-second-name" name="reg-acc-second-name"
+            class="form-control" placeholder="Second name">
     </div>
     <div class="form-group">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">Example block-level help text here.</p>
+        <label for="reg-acc-photo" class="text-center">Photo</label>
+        <br/>
+        <input (change)="onFileChange($event)" type="file" id="reg-acc-photo" name="reg-acc-photo" #fileInput>
     </div>
-    <div class="checkbox">
+    <!-- <div class="checkbox">
         <label>
             <input type="checkbox"> Check me out
         </label>
-    </div>
+    </div> -->
     <button type="button" class="btn btn-primary" (click)="register()">Register</button>
 </form>
 
