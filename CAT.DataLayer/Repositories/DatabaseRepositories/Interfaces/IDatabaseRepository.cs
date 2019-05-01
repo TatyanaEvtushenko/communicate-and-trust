@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace CAT.DataLayer.Repositories.DatabaseRepositories.Interfaces
 {
@@ -9,5 +10,7 @@ namespace CAT.DataLayer.Repositories.DatabaseRepositories.Interfaces
         void Add(T entity);
 
         void Update(T entity);
+
+        IQueryable<T> QueryableList();
     }
 }

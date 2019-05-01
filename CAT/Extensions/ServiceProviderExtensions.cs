@@ -5,6 +5,8 @@ using CAT.BusinessLayer.Services.ImageStoreServices;
 using CAT.BusinessLayer.Services.ImageStoreServices.Implementations;
 using CAT.BusinessLayer.Services.SmileServices;
 using CAT.BusinessLayer.Services.SmileServices.Interfaces;
+using CAT.BusinessLayer.Services.UserServices;
+using CAT.BusinessLayer.Services.UserServices.Implementations;
 using CAT.DataLayer.Models;
 using CAT.DataLayer.Repositories.DatabaseRepositories;
 using CAT.DataLayer.Repositories.DatabaseRepositories.Interfaces;
@@ -23,6 +25,7 @@ namespace CAT.Extensions
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ISmileService, TestSmileService>();
             services.AddScoped<IImageStoreService, CloudinaryService>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         public static void AddProjectUtils(this IServiceCollection services)
