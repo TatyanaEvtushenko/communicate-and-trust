@@ -10,5 +10,7 @@ namespace CAT.DataLayer.Models
         public string FirstName { get; set; }
 
         public string SecondName { get; set; }
+
+        public string AvatarUrl { get; set; }
     }
 }
