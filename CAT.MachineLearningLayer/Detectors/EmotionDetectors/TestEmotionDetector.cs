@@ -14,5 +14,10 @@ namespace CAT.MachineLearningLayer.Detectors.EmotionDetectors
             var emotionIndex = rand.Next(emotions.Length);
             return (Emotion) Enum.Parse(enumType, emotions[emotionIndex]);
         }
+
+        public void TrainDetector(string imgPath, Emotion emotion)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

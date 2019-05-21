@@ -6,16 +6,16 @@ namespace CAT.BusinessLayer.Services.SmileServices
 {
     public class TestSmileService : ISmileService
     {
-        private readonly IEmotionDetector _detector;
+        private readonly IEmotionDetector detector;
 
         public TestSmileService(IEmotionDetector detector)
         {
-            _detector = detector;
+            this.detector = detector;
         }
 
         public Emotion DetectEmotion(string imgBase64)
         {
-            return _detector.DetectEmotion(@"..\CAT.BusinessLayer\Test\Test.jpg");
+            return detector.DetectEmotion(@"..\CAT.BusinessLayer\Test\Test.jpg");
         }
     }
 }

@@ -3,20 +3,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CAT.Controllers
 {
-    [Route("api/smiles")]
+    [Produces("application/json")]
+    [Route("api/[controller]")]
     public class SmilesController : Controller
     {
-        private readonly ISmileService _service;
+        private readonly ISmileService service;
 
         public SmilesController(ISmileService service)
         {
-            _service = service;
+            this.service = service;
         }
-
-        [HttpGet]
+        
+        [HttpGet("detectemotion")]
         public string DetectEmotion()
         {
-            var emotion = _service.DetectEmotion(null);
+            var emotion = service.DetectEmotion(null);
             return emotion.ToString();
         }
     }
