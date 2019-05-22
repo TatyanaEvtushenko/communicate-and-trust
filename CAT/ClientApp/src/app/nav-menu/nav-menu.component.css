@@ -23,7 +23,7 @@ li.link-active a:focus {
     /* On small screens, convert the nav menu to a vertical sidebar */
     .main-nav {
         height: 100%;
-        width: calc(25% - 20px);
+        width: 16.7%;
     }
     .navbar {
         border-radius: 0px;
@@ -56,4 +56,27 @@ li.link-active a:focus {
         overflow: hidden;
         text-overflow: ellipsis;
     }
+}
+
+.navbar-container {
+  height: 100%;
+  width: 100%;
+}
+
+.navbar.navbar-inverse {
+  background-color: #5d5c61 !important;
+  border-color: #5d5c61 !important;
+}
+
+.navbar li.link-active a {
+  background-color: #557a95 !important;
+}
+
+.navbar.navbar-inverse .navbar-nav > li > a:hover {
+  background-color: #7395ae !important;
+}
+
+ul.nav.bottom {
+  border-top: 1px solid #444;
+  margin-top: 20px;
 }

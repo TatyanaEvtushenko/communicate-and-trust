@@ -1,0 +1,42 @@
+<h1>Dialogs</h1>
+
+<div class="list-body">
+  <div class="input-group flex-nowrap">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="addon-wrapping"><span class='glyphicon glyphicon-search'></span></span>
+    </div>
+    <input type="text" class="form-control" [ngModel]="searchString" (ngModelChange)="updateDialogsList($event)"
+           placeholder="Search" aria-label="Search" aria-describedby="addon-wrapping">
+  </div>
+
+  <p *ngIf="!dialogs"><em>Loading...</em></p>
+  <p *ngIf="dialogs && dialogs.length == 0"><em>Start your conversation with someone!</em></p>
+
+  <div class="card" *ngFor="let dialog of dialogs" (click)="openUserDialog(dialog.login)">
+    <div class="row no-gutters">
+      <div class="col-md-3">
+        <img src="{{ dialog.avatarUrl }}" class="card-img">
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ dialog.firstName + " " + dialog.secondName }}
+            <span class="card-login-title">@{{dialog.login}}</span>
+            <span class="card-login-status">{{dialog.isOnline ? "Online" : ""}}</span>
+          </h5>
+          <div class="row text-row" [ngClass]="!dialog.lastMessage.isReaden ? 'unreaden' : ''">
+            <div class="col-md-1" *ngIf="dialog.login != dialog.lastMessage.author">
+              <img src="{{ currentUserAvatar }}" class="card-author-img">
+            </div>
+            <div [ngClass]="dialog.login != dialog.lastMessage.author ? 'col-md-9' : 'col-md-10'">
+              <p class="card-text">{{ dialog.lastMessage.text }}</p>
+            </div>
+            <div class="col-md-2">
+              <p class="card-post-date">{{ dialog.lastMessage.postDate | date:'medium' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

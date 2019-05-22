@@ -19,6 +19,189 @@ namespace CAT.DataLayer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("CAT.DataLayer.Models.ActionLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ActionType");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Text");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ActionLogs");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.Dialog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("StartDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Dialogs");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.Emotion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EmotionType");
+
+                    b.Property<Guid>("Guid");
+
+                    b.Property<int?>("MessageId");
+
+                    b.Property<int>("MessagePosition");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MessageId");
+
+                    b.ToTable("Emotions");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int?>("DialogId");
+
+                    b.Property<bool>("IsRead");
+
+                    b.Property<string>("SenderId");
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DialogId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.TestLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<bool>("IsError");
+
+                    b.Property<int?>("TestSessionId");
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TestSessionId");
+
+                    b.ToTable("TestLogs");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.TestSession", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsValid");
+
+                    b.Property<int>("ResultType");
+
+                    b.Property<DateTime>("StartDate");
+
+                    b.Property<int>("Type");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("TestSessions");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.TrainingLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<bool>("IsError");
+
+                    b.Property<string>("Text");
+
+                    b.Property<int?>("TrainingSessionId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TrainingSessionId");
+
+                    b.ToTable("TrainingLogs");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.TrainingSession", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<DateTime>("StartDate");
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("TrainingSessions");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.TrainingSource", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("SourceUrl");
+
+                    b.Property<int?>("TrainingSessionId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TrainingSessionId");
+
+                    b.ToTable("TrainingSources");
+                });
+
             modelBuilder.Entity("CAT.DataLayer.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -76,6 +259,25 @@ namespace CAT.DataLayer.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.UserDialog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("DialogId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DialogId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserDialogs");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -186,6 +388,77 @@ namespace CAT.DataLayer.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.ActionLog", b =>
+                {
+                    b.HasOne("CAT.DataLayer.Models.User", "User")
+                        .WithMany("ActionLogs")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.Emotion", b =>
+                {
+                    b.HasOne("CAT.DataLayer.Models.Message", "Message")
+                        .WithMany("Emotions")
+                        .HasForeignKey("MessageId");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.Message", b =>
+                {
+                    b.HasOne("CAT.DataLayer.Models.Dialog", "Dialog")
+                        .WithMany("Messages")
+                        .HasForeignKey("DialogId");
+
+                    b.HasOne("CAT.DataLayer.Models.User", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.TestLog", b =>
+                {
+                    b.HasOne("CAT.DataLayer.Models.TestSession", "TestSession")
+                        .WithMany("TestLogs")
+                        .HasForeignKey("TestSessionId");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.TestSession", b =>
+                {
+                    b.HasOne("CAT.DataLayer.Models.User", "User")
+                        .WithMany("TestSessions")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.TrainingLog", b =>
+                {
+                    b.HasOne("CAT.DataLayer.Models.TrainingSession", "TrainingSession")
+                        .WithMany("TrainingLogs")
+                        .HasForeignKey("TrainingSessionId");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.TrainingSession", b =>
+                {
+                    b.HasOne("CAT.DataLayer.Models.User", "User")
+                        .WithMany("TrainingSessions")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.TrainingSource", b =>
+                {
+                    b.HasOne("CAT.DataLayer.Models.TrainingSession", "TrainingSession")
+                        .WithMany("TrainingSources")
+                        .HasForeignKey("TrainingSessionId");
+                });
+
+            modelBuilder.Entity("CAT.DataLayer.Models.UserDialog", b =>
+                {
+                    b.HasOne("CAT.DataLayer.Models.Dialog", "Dialog")
+                        .WithMany("UserDialogs")
+                        .HasForeignKey("DialogId");
+
+                    b.HasOne("CAT.DataLayer.Models.User", "User")
+                        .WithMany("UserDialogs")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

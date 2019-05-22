@@ -1,6 +1,8 @@
 ﻿using CAT.BusinessLayer.Options;
 using CAT.BusinessLayer.Services.AccountServices;
 using CAT.BusinessLayer.Services.AccountServices.Interfaces;
+using CAT.BusinessLayer.Services.DialogServices;
+using CAT.BusinessLayer.Services.DialogServices.Implementations;
 using CAT.BusinessLayer.Services.ImageStoreServices;
 using CAT.BusinessLayer.Services.ImageStoreServices.Implementations;
 using CAT.BusinessLayer.Services.SmileServices;
@@ -26,6 +28,7 @@ namespace CAT.Extensions
             services.AddScoped<ISmileService, TestSmileService>();
             services.AddScoped<IImageStoreService, CloudinaryService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IDialogService, DialogService>();
         }
 
         public static void AddProjectUtils(this IServiceCollection services)
@@ -36,6 +39,7 @@ namespace CAT.Extensions
         public static void AddProjectRepositories(this IServiceCollection services)
         {
             services.AddScoped<IDatabaseRepository<User>, UserRepository>();
+            services.AddScoped<IDatabaseRepository<Dialog>, DialogRepository>();
         }
 
         public static void AddProjectOptions(this IServiceCollection services, IConfiguration configuration)

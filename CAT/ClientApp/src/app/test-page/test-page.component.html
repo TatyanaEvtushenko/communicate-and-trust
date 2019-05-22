@@ -1,0 +1,86 @@
+<div class="row body-row">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card upload-form">
+        <div class="card-body">
+          <img [src]="source" *ngIf="source != ''"/>
+          <div class="empty-label" *ngIf="source == ''">
+            <span class="glyphicon-text">You can</span>
+            <a class="btn btn-primary">Take snapshot <span class="glyphicon glyphicon-camera" aria-hidden="true"></span></a>
+            <span class="glyphicon-text">or browse your</span>
+            <a class="btn btn-primary">Local files <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card emotions-form">
+        <h5 class="card-header">Test emotion type</h5>
+        <div class="card-body">
+          <h5 class="card-title">Select valid emotion type of uploaded image</h5>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="emotions" id="angry" value="angry">
+            <label class="form-check-label" for="angry">Angry</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="emotions" id="contempt" value="contempt">
+            <label class="form-check-label" for="contempt">Contempt</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="emotions" id="fear" value="fear">
+            <label class="form-check-label" for="fear">Fear</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="emotions" id="sadness" value="sadness">
+            <label class="form-check-label" for="sadness">Sadness</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="emotions" id="happiness" value="happiness">
+            <label class="form-check-label" for="happiness">Happiness</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="emotions" id="disgust" value="disgust">
+            <label class="form-check-label" for="disgust">Disgust</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="emotions" id="surprise" value="surprise">
+            <label class="form-check-label" for="surprise">Surprise</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="emotions" id="neutral" value="neutral">
+            <label class="form-check-label" for="neutral">Neutral</label>
+          </div>
+        </div>
+        <div class="card-footer" *ngIf="!isStart">
+          <a class="btn btn-primary" (click)="clickIsStart()">START</a>
+        </div>
+        <div class="card-footer" *ngIf="isStart">
+          <a class="btn btn-primary">RESET</a>
+        </div>
+      </div>
+      <div class="card test-results-form">
+        <h5 class="card-header">Test results</h5>
+        <div class="card-body" *ngIf="isStart">
+          <p>Valid result is: <b>SURPRISE</b>.</p>
+          <p>Neural network recognition results:</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Angry <span class="recognition-percent">2.957%</span></li>
+            <li class="list-group-item">Contempt <span class="recognition-percent">0.735%</span></li>
+            <li class="list-group-item">Fear <span class="recognition-percent">14.184%</span></li>
+            <li class="list-group-item">Sadness <span class="recognition-percent">0.041%</span></li>
+            <li class="list-group-item">Happiness <span class="recognition-percent">3.019%</span></li>
+            <li class="list-group-item">Disgust <span class="recognition-percent">1.193%</span></li>
+            <li class="list-group-item valid">Surprise <span class="recognition-percent">63.825%</span></li>
+            <li class="list-group-item">Neutral <span class="recognition-percent">0.017%</span></li>
+          </ul>
+        </div>
+        <div class="card-body" *ngIf="!isStart">
+          <p>Please upload an image and select an emotion type displayed on image to start testing emotion recognition model.</p>
+        </div>
+        <div class="card-footer" *ngIf="isStart">
+          <h4>Recognition is: <span class="valid-result">VALID</span></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,146 @@
+.row {
+  width: 100%;
+  margin: 0 auto 20px;
+}
+
+  .row.body-row {
+    width: 70%;
+    margin: 20px auto auto;
+  }
+
+.card {
+  margin-bottom: 20px;
+}
+
+.form-check {
+  padding-left: 0;
+}
+
+.form-check-label {
+  padding-left: 1.25em;
+}
+
+.card.emotions-form {
+  border: 1px solid rgba(0,0,0,0.3);
+}
+
+.emotions-form .card-header {
+  margin-top: 0;
+  background: #a1c5e0;
+  color: white;
+  font-size: 22px;
+  text-align: center;
+}
+
+.emotions-form .card-title {
+  font-size: 16px;
+}
+
+.emotions-form .card-body {
+  padding: 0 1.25rem 1.25rem;
+  background: #d3ecff;
+}
+
+.emotions-form .card-footer {
+  background: #a1c5e0;
+}
+
+  .emotions-form .card-footer .btn {
+    width: 100%;
+    font-size: 17px;
+    color: #5d5c61;
+    background: white;
+    border: 0;
+  }
+
+.card.upload-form {
+  border: 0;
+}
+
+.upload-form .card-body {
+  padding: 1.25rem;
+  background: #f4faff;
+  width: 100%;
+  min-height: 500px;
+  border: 3px dashed rgba(0,0,0,0.3);
+  position: inherit;
+}
+
+  .upload-form .card-body img {
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: auto;
+    bottom: 0;
+    top: 0;
+    max-width: 95%;
+    max-height: 95%;
+  }
+
+.empty-label {
+  width: 40%;
+  margin: auto;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  vertical-align: middle;
+  position: absolute;
+  height: 100px;
+}
+
+  .empty-label .btn {
+    background: transparent;
+    border: 1px solid #a1c5e0;
+    color: #a1c5e0;
+    margin: 3px 0;
+  }
+
+  .empty-label .glyphicon-text {
+    display: block;
+    font-size: 14px;
+  }
+
+.test-results-form .card-header {
+  margin-top: 0;
+  text-align: center;
+  font-size: 22px;
+}
+
+.test-results-form .list-group {
+  margin-bottom: 0;
+}
+
+  .test-results-form .list-group .list-group-item:first-child {
+    border-top: 0;
+  }
+
+  .test-results-form .list-group .list-group-item .recognition-percent {
+    float: right;
+  }
+
+  .test-results-form .list-group .list-group-item.valid {
+    background-image: linear-gradient(to right, #ffffff, rgba(76, 209, 55, 0.3), #ffffff);
+  }
+
+  .test-results-form .list-group .list-group-item.invalid {
+    background-image: linear-gradient(to right, #ffffff, rgba(194, 54, 22, 0.3), #ffffff);
+  }
+
+    .test-results-form .list-group .list-group-item.valid .recognition-percent,
+    .test-results-form .list-group .list-group-item.invalid .recognition-percent {
+      font-weight: 700;
+    }
+
+.test-results-form .card-footer {
+  text-align: center;
+}
+
+  .test-results-form .card-footer .valid-result {
+    color: #4cd137;
+  }
+
+  .test-results-form .card-footer .invalid-result {
+    color: #c23616;
+  }

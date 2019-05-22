@@ -1,0 +1,94 @@
+h1 {
+  text-align: center;
+}
+
+.list-body {
+  width: 60%;
+  margin: auto;
+}
+
+  .list-body .input-group {
+    margin: 25px 0;
+  }
+
+.input-group-text {
+  font-size: 15px;
+}
+
+.input-group.flex-nowrap {
+  display: flex;
+}
+
+.card {
+  margin: 10px 0;
+  cursor: pointer;
+  height: 140px
+}
+
+  .card > .row {
+    margin: 0;
+    height: 100%;
+  }
+
+  .card .row > div {
+    height: 100%;
+  }
+
+  .card .card-img {
+    width: 100%;
+    height: 100%;
+    border-radius: .25rem;
+  }
+
+  .card .card-title {
+    font-size: 20px;
+  }
+
+  .card .card-login-title {
+    color: #7395AE;
+  }
+
+  .card .card-login-status {
+    color: #a5a4aa;
+    float: right;
+    font-size: 14px;
+  }
+
+  .card .card-author-img {
+    border-radius: 50%;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+  }
+
+  .card .text-row > div {
+    padding: 0;
+    height: 100%;
+  }
+
+  .card .card-post-date {
+    float: right;
+    color: #a5a4aa;
+    font-size: 9px;
+  }
+
+  .card .text-row.unreaden {
+    background: #deecf7;
+    color: #5d5c61 !important;
+  }
+
+  .card .text-row {
+    margin: 20px 0px;
+    font-size: 15px;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+    .card .text-row .card-text,
+    .card .text-row .card-post-date {
+      padding-top: 5px;
+    }
+
+  .card .card-body {
+    height: 100%;
+  }

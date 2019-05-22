@@ -1,0 +1,38 @@
+.row {
+  width: 100%;
+  margin: 0 auto 20px;
+}
+
+  .row.body-row {
+    width: 60%;
+    margin: 20px auto auto;
+  }
+
+.card {
+  margin-bottom: 20px;
+}
+
+.start-time {
+  position: absolute;
+  right: 5px;
+  font-size: 12px;
+  top: 13px;
+}
+
+.card-body {
+  font-size: 16px;
+}
+
+.card-header,
+.card-footer {
+  font-size: 18px;
+  text-align: center;
+}
+
+.valid-result {
+  color: #4cd137;
+}
+
+.invalid-result {
+  color: #c23616;
+}

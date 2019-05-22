@@ -3,4 +3,5 @@ export class User {
   secondName: string;
   name: string;
   avatar: string;
+  isOnline: boolean;
 }

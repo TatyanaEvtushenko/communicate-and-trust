@@ -1,11 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <ul class="panel-title nav nav-tabs nav-justified">
-      <li role="presentation" [ngClass]="{active: isSignInForm}" (click)="selectSignInForm()">
-        <a href="#">Sign In</a>
+      <li role="presentation" class="nav-item" (click)="selectSignInForm()">
+        <a class="nav-link" [ngClass]="{active: isSignInForm}" href="#">Sign In</a>
       </li>
-      <li role="presentation" [ngClass]="{active: !isSignInForm}" (click)="selectRegisterForm()">
-        <a href="#">Register</a>
+      <li role="presentation" class="nav-item" (click)="selectRegisterForm()">
+        <a class="nav-link" [ngClass]="{active: !isSignInForm}" href="#">Register</a>
       </li>
     </ul>
   </div>

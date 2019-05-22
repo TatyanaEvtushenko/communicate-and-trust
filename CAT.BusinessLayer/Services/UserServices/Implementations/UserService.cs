@@ -27,5 +27,10 @@ namespace CAT.BusinessLayer.Services.UserServices.Implementations
                 .Where(x => x.UserName.Contains(searchString))
                 .Select(x => new UserListingViewModel(x)).ToList();
         }
+
+        public string GetUserIdByName(string name)
+        {
+            return userRepository.GetFirst(x => x.UserName == name)?.Id;
+        }
     }
 }

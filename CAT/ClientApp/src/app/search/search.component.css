@@ -1,0 +1,21 @@
+h1,
+h5 {
+  text-align: center;
+}
+
+.search-body {
+  width: 60%;
+  margin: auto;
+}
+
+  .search-body .input-group {
+    margin: 25px 0;
+  }
+
+.input-group-text {
+  font-size: 15px;
+}
+
+.input-group.flex-nowrap {
+  display: flex;
+}

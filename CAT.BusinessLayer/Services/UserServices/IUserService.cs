@@ -8,5 +8,7 @@ namespace CAT.BusinessLayer.Services.UserServices
         IEnumerable<UserListingViewModel> GetTopUsersCollection();
 
         IEnumerable<UserListingViewModel> GetUsersCollectionByString(string searchString);
+
+        string GetUserIdByName(string name);
     }
 }

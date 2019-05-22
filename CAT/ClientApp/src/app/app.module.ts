@@ -16,9 +16,16 @@ import { SmileDetectorComponent } from './smile-detector/smile-detector.componen
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { SigninFormComponent } from './signin-form/signin-form.component';
 import { LoaderComponent } from './loader/loader.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { DialogListComponent } from './dialog-list/dialog-list.component';
+import { MessageListComponent } from './message-list/message-list.component';
+import { TrainingPageComponent } from './training-page/training-page.component';
+import { TestPageComponent } from './test-page/test-page.component';
+import { SessionsComponent } from './sessions/sessions.component';
 
 import { AccountService } from '../services/account-service/account.service';
 import { UserService } from '../services/user-service/user.service';
+import { DialogService } from '../services/dialog-service/dialog.service';
 import { HttpService } from '../services/http-service/http.service';
 import { AuthorizedUserService } from '../services/authorized-user-service/authorized-user.service';
 import { AuthFormComponent } from './auth-form/auth-form.component';
@@ -36,7 +43,13 @@ import { AuthFormComponent } from './auth-form/auth-form.component';
     RegisterFormComponent,
     SigninFormComponent,
     LoaderComponent,
-    AuthFormComponent
+    AuthFormComponent,
+    DialogComponent,
+    DialogListComponent,
+    MessageListComponent,
+    TrainingPageComponent,
+    TestPageComponent,
+    SessionsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -46,7 +59,9 @@ import { AuthFormComponent } from './auth-form/auth-form.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'search', component: SearchComponent },
-      { path: 'admin-page', component: AdminPageComponent }
+      { path: 'admin-page', component: AdminPageComponent },
+      { path: 'dialog/:userName', component: DialogComponent },
+      { path: 'dialogs', component: DialogListComponent }
     ]),
     WebcamModule
   ],
@@ -54,7 +69,8 @@ import { AuthFormComponent } from './auth-form/auth-form.component';
     HttpService,
     AccountService,
     AuthorizedUserService,
-    UserService
+    UserService,
+    DialogService
   ],
   bootstrap: [AppComponent]
 })

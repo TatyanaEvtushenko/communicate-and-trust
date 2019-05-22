@@ -1,0 +1,28 @@
+.nav.nav-tabs {
+  height: 57px;
+  background-color: #5d5c61 !important;
+  color: white !important;
+}
+
+.nav-tabs .nav-item {
+  width: 250px;
+  margin: auto;
+}
+
+.nav-tabs .nav-link {
+  border: 0;
+  border-radius: 5px;
+  text-align: center;
+  margin: 5px;
+  cursor: pointer;
+}
+
+  .nav-tabs .nav-link.active {
+    color: white;
+    background-color: #557a95 !important;
+  }
+
+  .nav-tabs .nav-link:hover {
+    color: white;
+    background: #7395ae !important;
+  }

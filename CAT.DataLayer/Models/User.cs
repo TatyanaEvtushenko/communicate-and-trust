@@ -1,4 +1,5 @@
-﻿using CAT.DataLayer.Models.Enums;
+﻿using System.Collections.Generic;
+using CAT.DataLayer.Models.Enums;
 using Microsoft.AspNetCore.Identity;
 
 namespace CAT.DataLayer.Models
@@ -12,5 +13,13 @@ namespace CAT.DataLayer.Models
         public string SecondName { get; set; }
 
         public string AvatarUrl { get; set; }
+
+        public ICollection<UserDialog> UserDialogs { get; set; } = new List<UserDialog>();
+
+        public ICollection<TrainingSession> TrainingSessions { get; set; } = new List<TrainingSession>();
+
+        public ICollection<TestSession> TestSessions { get; set; } = new List<TestSession>();
+
+        public ICollection<ActionLog> ActionLogs { get; set; } = new List<ActionLog>();
     }
 }
