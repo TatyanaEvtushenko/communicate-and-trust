@@ -51,7 +51,8 @@ namespace CAT
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddOptions();
-
+            services.Configure<CascadeOption>(Configuration.GetSection("Cascades"));
+            services.Configure<NeuralNetworkOption>(Configuration.GetSection("NeuralNetwork"));
             services.AddProjectOptions(Configuration);
             services.AddProjectRepositories();
             services.AddProjectUtils();

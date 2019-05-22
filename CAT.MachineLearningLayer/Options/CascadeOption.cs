@@ -5,7 +5,5 @@
         public string BaseFolder { get; set; }
 
         public string FaceCascadeFile { get; set; }
-
-        public string EyeCascadeFile { get; set; }
     }
 }
