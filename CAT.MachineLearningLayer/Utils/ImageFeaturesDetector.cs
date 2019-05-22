@@ -2,13 +2,11 @@
 
 namespace CAT.MachineLearningLayer.Utils
 {
-    internal class ClassifierHelper
+    internal class ImageFeaturesDetector
     {
-        private readonly string _cascadesFolderPath;
-
-        public ClassifierHelper(string baseCascadesFolderPath)
+        public static CascadeClassifier GetClassifier(string cascadePath)
         {
-            _cascadesFolderPath = baseCascadesFolderPath;
+            return new CascadeClassifier(cascadePath);
         }
 
         public static Mat NormalizeImage(Mat srcImage)
@@ -28,11 +26,6 @@ namespace CAT.MachineLearningLayer.Utils
                 flags: HaarDetectionType.DoRoughSearch | HaarDetectionType.ScaleImage,
                 minSize: new Size(30, 30)
             );
-        }
-
-        public CascadeClassifier GetClassifier(string cascadeName)
-        {
-            return new CascadeClassifier(_cascadesFolderPath + cascadeName);
         }
     }
 }

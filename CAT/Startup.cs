@@ -53,6 +53,7 @@ namespace CAT
 
             services.AddOptions();
             services.Configure<CascadeOption>(Configuration.GetSection("Cascades"));
+            services.Configure<NeuralNetworkOption>(Configuration.GetSection("NeuralNetwork"));
 
             services.AddProjectRepositories();
             services.AddProjectUtils();

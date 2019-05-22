@@ -2,6 +2,15 @@
 {
     public enum Emotion
     {
-        Happy, Sad
+        Fear,
+        Contempt,
+        Happiness,
+        Sadness,
+        Surprise,
+        Anger,
+        Disgust,
+        Neutral,
+        Undefined,
+        NoFaces
     }
 }
