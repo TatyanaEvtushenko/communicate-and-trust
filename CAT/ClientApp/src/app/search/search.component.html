@@ -1,0 +1,18 @@
+<h1>Users Search</h1>
+
+<h5>There you can find new friends and cats (^_^)</h5>
+
+<div class="search-body">
+  <div class="input-group flex-nowrap">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="addon-wrapping"><span class='glyphicon glyphicon-search'></span></span>
+    </div>
+    <input type="text" class="form-control" [ngModel]="searchString" (ngModelChange)="updateUsersList($event)"
+           placeholder="Enter more than 2 symbols to search" aria-label="Search" aria-describedby="addon-wrapping">
+    <input type="button" (click)="searchReset()" value="Reset search results" *ngIf="searchResultActive" />
+  </div>
+
+  <p *ngIf="!users"><em>Loading...</em></p>
+
+  <user-list [users]="users" *ngIf="users"></user-list>
+</div>

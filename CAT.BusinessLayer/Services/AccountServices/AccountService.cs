@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using CAT.BusinessLayer.Models.Account.ResultModels;
 using CAT.BusinessLayer.Models.Account.ViewModels;
 using CAT.BusinessLayer.Services.AccountServices.Interfaces;
+using CAT.BusinessLayer.Services.ImageStoreServices;
 using CAT.BusinessLayer.Utils.Tokens;
-using CAT.BusinessLayer.ViewModels.Account;
 using CAT.DataLayer.Models;
 using CAT.DataLayer.Models.Enums;
 using CAT.DataLayer.Repositories.DatabaseRepositories.Interfaces;
@@ -19,13 +19,18 @@ namespace CAT.BusinessLayer.Services.AccountServices
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
         private readonly IDatabaseRepository<User> userRepository;
+        private readonly IImageStoreService imageStoreService;
 
-        public AccountService(UserManager<User> userManager, SignInManager<User> signInManager,
-            IDatabaseRepository<User> userRepository)
+        public AccountService(
+            UserManager<User> userManager,
+            SignInManager<User> signInManager,
+            IDatabaseRepository<User> userRepository,
+            IImageStoreService imageStoreService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.userRepository = userRepository;
+            this.imageStoreService = imageStoreService;
         }
 
         public async Task<IdentityResult> RegisterUser(RegisterAccountViewModel userInfo)
@@ -38,11 +43,19 @@ namespace CAT.BusinessLayer.Services.AccountServices
                 SecondName = userInfo.SecondName,
                 AvailabilityStatus = UserAvailabilityStatus.Offline
             };
+            if (userInfo.File != null)
+            {
+                user.AvatarUrl = imageStoreService.Save(
+                    userInfo.File.FileName,
+                    userInfo.File.OpenReadStream());
+            }
+
             var result = await userManager.CreateAsync(user, userInfo.Password);
             if (!result.Succeeded)
             {
                 return result;
             }
+
             result = await userManager.AddToRoleAsync(user, "User");
             return result;
         }

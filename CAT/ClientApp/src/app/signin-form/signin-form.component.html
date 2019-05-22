@@ -1,12 +1,15 @@
-<label for="signin-acc-login" class="text-center">Login</label>
-<input [(ngModel)]="account.login" type="text" id="signin-acc-login" class="form-control" placeholder="test@mail.com">
-
-<label for="signin-acc-password" class="text-center">Password</label>
-<input [(ngModel)]="account.password" type="password" id="signin-acc-password" class="form-control" placeholder="test@mail.com">
+<div class="form-group">
+  <label for="signin-acc-login" class="text-center">Login</label>
+  <input [(ngModel)]="account.login" type="text" id="signin-acc-login" class="form-control" placeholder="login">
+</div>
+<div class="form-group">
+  <label for="signin-acc-password" class="text-center">Password</label>
+  <input [(ngModel)]="account.password" type="password" id="signin-acc-password" class="form-control" placeholder="password">
+</div>
 
 <p *ngIf="result != null && result.succeeded">The user is authorized!</p>
 <ul *ngIf="result != null && !result.succeeded">
-    <li *ngFor="let error of result.errors">{{error.code}}: {{error.description}}</li>
+  <li *ngFor="let error of result.errors">{{error.code}}: {{error.description}}</li>
 </ul>
 
 <button type="button" class="btn btn-primary" (click)="signIn()">Sign In</button>

@@ -1,0 +1,55 @@
+
+.card {
+  margin: 10px 0;
+  cursor: pointer;
+  height: 140px
+}
+
+  .card > .row {
+    margin: 0;
+    height: 100%;
+  }
+
+  .card .row > div {
+    height: 100%;
+  }
+
+  .card .card-img {
+    width: 100%;
+    height: 100%;
+    border-radius: .25rem;
+  }
+
+  .card .card-title {
+    font-size: 20px;
+  }
+
+  .card .card-login-title {
+    color: #7395AE;
+  }
+
+  .card .card-login-status {
+    color: #a5a4aa;
+    float: right;
+    font-size: 14px;
+  }
+
+  .card .card-body {
+    height: 100%;
+  }
+
+  .card .card-text {
+    font-size: 15px;
+  }
+
+    .card .card-text .card-login-title {
+      font-size: 17px;
+    }
+
+  .card .dialog-link {
+    background-color: #557a95 !important;
+  }
+
+    .card .dialog-link:hover {
+      background-color: #7395ae !important;
+    }

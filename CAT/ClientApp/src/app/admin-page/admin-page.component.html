@@ -1,14 +1,15 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link" [ngClass]="{ active : page == 0 }" (click)="updatePageState(0)">Train emotion recognition model</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" [ngClass]="{ active : page == 1 }" (click)="updatePageState(1)">Test emotion recognition model</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
+    <a class="nav-link" [ngClass]="{ active : page == 2 }" (click)="updatePageState(2)">Previous test and train sessions</a>
   </li>
 </ul>
+
+<training-page *ngIf="page == 0"></training-page>
+<test-page *ngIf="page == 1"></test-page>
+<sessions *ngIf="page == 2"></sessions>

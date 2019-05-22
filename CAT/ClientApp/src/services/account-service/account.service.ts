@@ -13,7 +13,7 @@ export class AccountService {
     http.controllerName = 'account';
   }
 
-  registerUser(user: RegisterAccount): Observable<ActionResult> {
+  registerUser(user: FormData): Observable<ActionResult> {
     return this.http.post('register', user);
   }
 

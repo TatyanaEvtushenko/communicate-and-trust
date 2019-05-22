@@ -1,0 +1,19 @@
+<div class="d-flex mb-4" *ngFor="let message of messages"
+     [ngClass]="message.author == '' ? 'justify-content-end' : 'justify-content-start'">
+  <div class="img_cont_msg" *ngIf="message.author != ''">
+    <img [src]="message.avatarUrl" class="rounded-circle user_img_msg">
+  </div>
+  <div class="msg_reaction_send" *ngIf="message.isReaction && message.author == ''">
+    Reaction :
+  </div>
+  <div [ngClass]="message.author == '' ? 'msg_cotainer_send' : 'msg_cotainer'">
+    {{message.text}}
+    <span [ngClass]="message.author == '' ? 'msg_time_send' : 'msg_time'">{{message.postDate | date:'medium'}}</span>
+  </div>
+  <div class="msg_reaction" *ngIf="message.isReaction && message.author != ''">
+    : Reaction
+  </div>
+  <div class="img_cont_msg" *ngIf="message.author == ''">
+    <img [src]="message.avatarUrl" class="rounded-circle user_img_msg">
+  </div>
+</div>

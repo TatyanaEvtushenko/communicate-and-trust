@@ -8,29 +8,31 @@ namespace CAT.DataLayer.Repositories.DatabaseRepositories
     public abstract class BaseDatabaseRepository<T> : IDatabaseRepository<T>
         where T: class
     {
-        private readonly ApplicationDbContext dbContext;
+        protected readonly ApplicationDbContext DbContext;
 
         protected BaseDatabaseRepository(ApplicationDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            DbContext = dbContext;
         }
 
         public T GetFirst(Func<T, bool> predicate)
         {
-            var entity = dbContext.Set<T>().FirstOrDefault(predicate);
+            var entity = DbContext.Set<T>().FirstOrDefault(predicate);
             return entity;
         }
 
         public void Add(T entity)
         {
-            dbContext.Set<T>().Add(entity);
-            dbContext.SaveChanges();
+            DbContext.Set<T>().Add(entity);
+            DbContext.SaveChanges();
         }
 
         public void Update(T entity)
         {
-            dbContext.Set<T>().Update(entity);
-            dbContext.SaveChanges();
+            DbContext.Set<T>().Update(entity);
+            DbContext.SaveChanges();
         }
+
+        public abstract IQueryable<T> QueryableList();
     }
 }

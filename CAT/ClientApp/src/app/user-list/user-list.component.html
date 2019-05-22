@@ -1,0 +1,21 @@
+<p *ngIf="users.length == 0"><em>There is no users with name like this</em></p>
+
+<div class="card" *ngFor="let user of users">
+  <div class="row no-gutters">
+    <div class="col-md-3">
+      <img src="{{ user.avatar }}" class="card-img">
+    </div>
+    <div class="col-md-9">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ user.firstName + " " + user.secondName }}
+          <span class="card-login-status">{{user.isOnline ? "Online" : ""}}</span>
+        </h5>
+        <p class="card-text">Login: <span class="card-login-title">@{{user.name}}</span></p>
+        <a [routerLink]="['/dialog', user.name]" class="btn btn-primary dialog-link">
+          Go to Dialog
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

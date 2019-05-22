@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth-form.component.css']
 })
 export class AuthFormComponent implements OnInit {
-
   isSignInForm = true;
 
   constructor() { }

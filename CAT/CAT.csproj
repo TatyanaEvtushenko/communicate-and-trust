@@ -16,6 +16,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,9 +26,38 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\dialog-list\dialog-list.component.ts" />
+    <None Remove="ClientApp\src\app\dialog\dialog.component.ts" />
+    <None Remove="ClientApp\src\app\message-list\message-list.component.ts" />
+    <None Remove="ClientApp\src\app\training-page\training-page.component.ts" />
+    <None Remove="ClientApp\src\app\user-list\user-list.component.ts" />
+    <None Remove="ClientApp\src\models\dialog\dialog.ts" />
+    <None Remove="ClientApp\src\models\dialog\dialogPreview.ts" />
+    <None Remove="ClientApp\src\models\dialog\message.ts" />
+    <None Remove="ClientApp\src\services\dialog-service\dialog.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CAT.BusinessLayer\CAT.BusinessLayer.csproj" />
     <ProjectReference Include="..\CAT.DataLayer\CAT.DataLayer.csproj" />
     <ProjectReference Include="..\CAT.MachineLearningLayer\CAT.MachineLearningLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\dialog-list\dialog-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\dialog\dialog.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\message-list\message-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\training-page\training-page.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\user-list\user-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\models\dialog\dialog.ts" />
+    <TypeScriptCompile Include="ClientApp\src\models\dialog\dialogPreview.ts" />
+    <TypeScriptCompile Include="ClientApp\src\models\dialog\message.ts" />
+    <TypeScriptCompile Include="ClientApp\src\services\dialog-service\dialog.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\sessions\" />
+    <Folder Include="ClientApp\src\app\test-page\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

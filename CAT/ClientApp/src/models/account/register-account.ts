@@ -1,8 +1,12 @@
 export class RegisterAccount {
-    email: string;
-    userName: string;
-    password: string;
-    confirmedPassword: string;
-    firstName: string;
-    secondName: string;
+  constructor(
+    public email: string,
+    public userName: string,
+    public password: string,
+    public confirmedPassword: string,
+    public firstName: string,
+    public secondName: string,
+    public file: any
+  ) {
+  }
 }

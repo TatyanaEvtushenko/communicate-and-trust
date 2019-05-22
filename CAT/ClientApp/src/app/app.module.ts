@@ -9,14 +9,23 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { SearchComponent } from './search/search.component';
+import { UserListComponent } from './user-list/user-list.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { SmileDetectorComponent } from './smile-detector/smile-detector.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { SigninFormComponent } from './signin-form/signin-form.component';
 import { LoaderComponent } from './loader/loader.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { DialogListComponent } from './dialog-list/dialog-list.component';
+import { MessageListComponent } from './message-list/message-list.component';
+import { TrainingPageComponent } from './training-page/training-page.component';
+import { TestPageComponent } from './test-page/test-page.component';
+import { SessionsComponent } from './sessions/sessions.component';
 
 import { AccountService } from '../services/account-service/account.service';
+import { UserService } from '../services/user-service/user.service';
+import { DialogService } from '../services/dialog-service/dialog.service';
 import { HttpService } from '../services/http-service/http.service';
 import { AuthorizedUserService } from '../services/authorized-user-service/authorized-user.service';
 import { AuthFormComponent } from './auth-form/auth-form.component';
@@ -27,13 +36,20 @@ import { AuthFormComponent } from './auth-form/auth-form.component';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent,
+    SearchComponent,
+    UserListComponent,
     AdminPageComponent,
     SmileDetectorComponent,
     RegisterFormComponent,
     SigninFormComponent,
     LoaderComponent,
-    AuthFormComponent
+    AuthFormComponent,
+    DialogComponent,
+    DialogListComponent,
+    MessageListComponent,
+    TrainingPageComponent,
+    TestPageComponent,
+    SessionsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,15 +58,19 @@ import { AuthFormComponent } from './auth-form/auth-form.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'admin-page', component: AdminPageComponent }
+      { path: 'search', component: SearchComponent },
+      { path: 'admin-page', component: AdminPageComponent },
+      { path: 'dialog/:userName', component: DialogComponent },
+      { path: 'dialogs', component: DialogListComponent }
     ]),
     WebcamModule
   ],
   providers: [
     HttpService,
     AccountService,
-    AuthorizedUserService
+    AuthorizedUserService,
+    UserService,
+    DialogService
   ],
   bootstrap: [AppComponent]
 })
