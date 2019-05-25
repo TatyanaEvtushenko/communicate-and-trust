@@ -24,7 +24,7 @@
             <span class="card-login-title">@{{dialog.login}}</span>
             <span class="card-login-status">{{dialog.isOnline ? "Online" : ""}}</span>
           </h5>
-          <div class="row text-row" [ngClass]="!dialog.lastMessage.isReaden ? 'unreaden' : ''">
+          <div class="row text-row" [ngClass]="!dialog.lastMessage.isRead ? 'unreaden' : ''">
             <div class="col-md-1" *ngIf="dialog.login != dialog.lastMessage.author">
               <img src="{{ currentUserAvatar }}" class="card-author-img">
             </div>

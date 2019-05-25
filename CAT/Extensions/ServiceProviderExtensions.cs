@@ -5,6 +5,8 @@ using CAT.BusinessLayer.Services.DialogServices;
 using CAT.BusinessLayer.Services.DialogServices.Implementations;
 using CAT.BusinessLayer.Services.ImageStoreServices;
 using CAT.BusinessLayer.Services.ImageStoreServices.Implementations;
+using CAT.BusinessLayer.Services.MessageServices;
+using CAT.BusinessLayer.Services.MessageServices.Implementations;
 using CAT.BusinessLayer.Services.SmileServices;
 using CAT.BusinessLayer.Services.SmileServices.Interfaces;
 using CAT.BusinessLayer.Services.UserServices;
@@ -29,6 +31,7 @@ namespace CAT.Extensions
             services.AddScoped<IImageStoreService, CloudinaryService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDialogService, DialogService>();
+            services.AddScoped<IMessageService, MessageService>();
         }
 
         public static void AddProjectUtils(this IServiceCollection services)
@@ -40,12 +43,14 @@ namespace CAT.Extensions
         {
             services.AddScoped<IDatabaseRepository<User>, UserRepository>();
             services.AddScoped<IDatabaseRepository<Dialog>, DialogRepository>();
+            services.AddScoped<IDatabaseRepository<Message>, MessageRepository>();
         }
 
         public static void AddProjectOptions(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<CascadeOption>(configuration.GetSection("Cascades"));
             services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
+            services.Configure<NeuralNetworkOption>(configuration.GetSection("NeuralNetwork"));
         }
     }
 }

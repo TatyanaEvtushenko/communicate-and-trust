@@ -2,6 +2,7 @@ using CAT.BusinessLayer.Utils.Tokens;
 using CAT.DataLayer.Contextes;
 using CAT.DataLayer.Models;
 using CAT.Extensions;
+using CAT.MachineLearningLayer.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -51,8 +52,6 @@ namespace CAT
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddOptions();
-            services.Configure<CascadeOption>(Configuration.GetSection("Cascades"));
-            services.Configure<NeuralNetworkOption>(Configuration.GetSection("NeuralNetwork"));
             services.AddProjectOptions(Configuration);
             services.AddProjectRepositories();
             services.AddProjectUtils();

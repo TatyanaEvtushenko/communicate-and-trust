@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CAT.BusinessLayer.Models.DialogModels;
+using CAT.DataLayer.Models;
 
 namespace CAT.BusinessLayer.Services.DialogServices
 {
@@ -8,5 +9,7 @@ namespace CAT.BusinessLayer.Services.DialogServices
         IEnumerable<DialogListingViewModel> GetUserDialogs(string userId);
 
         DialogViewModel GetDialog(string firstUserId, string secondUserId);
+
+        Dialog GetDomainDialog(string firstUserId, string secondUserId);
     }
 }

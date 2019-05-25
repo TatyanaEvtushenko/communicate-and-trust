@@ -13,6 +13,8 @@ namespace CAT.DataLayer.Models
 
         public bool IsRead { get; set; }
 
+        public bool IsReaction { get; set; }
+
         public User Sender { get; set; }
 
         public Dialog Dialog { get; set; }

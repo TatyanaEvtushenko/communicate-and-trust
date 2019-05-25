@@ -1,8 +1,9 @@
 export class Message {
   public author: string;
+  public to: string;
   public avatarUrl: string;
   public text: string;
   public postDate: Date;
-  public isReaden: boolean;
+  public isRead: boolean;
   public isReaction: boolean;
 }

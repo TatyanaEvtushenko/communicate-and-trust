@@ -14,10 +14,14 @@ export class SigninFormComponent implements OnInit {
   public account: SignInAccount = new SignInAccount();
   public result: ActionResult;
 
-  constructor(private accountService: AccountService, private userService: AuthorizedUserService) {
+  constructor(
+    private accountService: AccountService,
+    private userService: AuthorizedUserService) {
   }
 
   ngOnInit() {
+    this.account.login = "tumanov.97.dima@gmail.com";
+    this.account.password = "1029lokality97A!";
   }
 
   public signIn() {
@@ -27,6 +31,7 @@ export class SigninFormComponent implements OnInit {
           this.userService.saveUserData(data);
         }
         this.result = data;
+        window.location.reload();
       }, error => {
         this.result = {
           succeeded: false,

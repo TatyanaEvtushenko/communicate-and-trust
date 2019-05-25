@@ -22,6 +22,9 @@ export class NavMenuComponent {
   }
 
   signOut() {
-    this.accountService.signOut().subscribe(this.userService.removeUserData, this.userService.removeUserData);
+    this.accountService.signOut().subscribe(() => {
+      this.userService.removeUserData();
+      window.location.reload();
+    }, this.userService.removeUserData);
   }
 }

@@ -30,7 +30,7 @@ export class HttpService {
   private getRequestOptions() {
     let token = SessionStorage.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return { 
+    return {
       headers: headers
     };
   }

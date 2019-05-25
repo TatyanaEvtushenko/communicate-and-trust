@@ -15,19 +15,19 @@ namespace CAT.DataLayer.Repositories.DatabaseRepositories
             DbContext = dbContext;
         }
 
-        public T GetFirst(Func<T, bool> predicate)
+        public virtual T GetFirst(Func<T, bool> predicate)
         {
             var entity = DbContext.Set<T>().FirstOrDefault(predicate);
             return entity;
         }
 
-        public void Add(T entity)
+        public virtual void Add(T entity)
         {
             DbContext.Set<T>().Add(entity);
             DbContext.SaveChanges();
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             DbContext.Set<T>().Update(entity);
             DbContext.SaveChanges();

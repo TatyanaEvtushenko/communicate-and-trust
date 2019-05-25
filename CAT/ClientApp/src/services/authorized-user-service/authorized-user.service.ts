@@ -16,6 +16,7 @@ export class AuthorizedUserService {
     AuthorizedUserService.isAuthorized = true;
     SessionStorage.saveToken(data.accessToken);
     SessionStorage.saveUserName(data.userName);
+    SessionStorage.saveUserAvatar(data.avatarUrl);
     SessionStorage.saveRole(data.role);
   }
 
@@ -23,6 +24,7 @@ export class AuthorizedUserService {
     AuthorizedUserService.isAuthorized = false;
     SessionStorage.removeToken();
     SessionStorage.removeUserName();
+    SessionStorage.removeUserAvatar();
     SessionStorage.removeRole();
   }
 

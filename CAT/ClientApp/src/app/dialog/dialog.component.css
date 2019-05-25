@@ -28,6 +28,10 @@
   overflow-y: auto;
 }
 
+  .msg_card_body > p {
+    text-align: center;
+  }
+
 .card-header {
   border-radius: 15px 15px 0 0 !important;
   border-bottom: 0 !important;
@@ -142,6 +146,7 @@
     font-size: 25px;
     color: #5d5c61;
   }
+
     .user_info span.login-span {
       color: #7395AE;
     }
@@ -236,4 +241,16 @@
 
 .glyphicon {
   font-size: 16px;
+}
+
+.popover {
+  position: absolute;
+  top: calc(100% - 235px);
+  left: calc(20% - 235px);
+  max-height: 260px;
+}
+
+.webcam-wrapper,
+video {
+  max-height: 150px;
 }

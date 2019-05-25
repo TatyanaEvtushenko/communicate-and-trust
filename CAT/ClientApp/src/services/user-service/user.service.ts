@@ -11,6 +11,7 @@ export class UserService {
   }
 
   getTopTenUsers(): Observable<User[]> {
+    this.http.controllerName = 'user';
     return this.http.get('top10');
   }
 

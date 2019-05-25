@@ -24,13 +24,24 @@ namespace CAT.BusinessLayer.Services.UserServices.Implementations
         public IEnumerable<UserListingViewModel> GetUsersCollectionByString(string searchString)
         {
             return userRepository.QueryableList()
-                .Where(x => x.UserName.Contains(searchString))
+                .Where(x => IsUserAvailable(x, searchString))
                 .Select(x => new UserListingViewModel(x)).ToList();
         }
 
         public string GetUserIdByName(string name)
         {
-            return userRepository.GetFirst(x => x.UserName == name)?.Id;
+            return GetUserByName(name)?.Id;
+        }
+
+        public User GetUserByName(string name)
+        {
+            return userRepository.GetFirst(x => x.UserName == name);
+        }
+
+        private bool IsUserAvailable(User user, string searchString)
+        {
+            return user.UserName.Contains(searchString) ||
+                   $"{user.FirstName} {user.SecondName}".Contains(searchString);
         }
     }
 }

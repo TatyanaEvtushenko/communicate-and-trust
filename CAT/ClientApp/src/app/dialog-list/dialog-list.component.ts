@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DialogService } from '../../services/dialog-service/dialog.service';
 import { DialogPreview } from "../../models/dialog/dialogPreview";
 import { Message } from "../../models/dialog/message";
+import { SessionStorage } from "../../utils/session-storage";
 
 @Component({
   selector: 'dialog-list',
@@ -13,15 +14,21 @@ export class DialogListComponent implements OnInit {
   public dialogs: DialogPreview[];
   public searchString: string;
   public currentUserAvatar: string;
+  public currentUserName: string;
 
   constructor(
     private dialogService: DialogService,
     private router: Router
   ) {
-    this.currentUserAvatar = "https://sun2.cosmostv-by-minsk.userapi.com/c850720/v850720123/b29bd/ZeZQRRpKczo.jpg";
   }
 
   ngOnInit() {
+    this.currentUserAvatar = SessionStorage.getUserAvatar();
+    this.currentUserName = SessionStorage.getUserName();
+    this.dialogService.getCurrentUserDialogs(this.currentUserName).subscribe(result => {
+      this.dialogs = result;
+    }, error => console.error(error));
+
     var dialogPreview1 = new DialogPreview();
     dialogPreview1.firstName = "Captain";
     dialogPreview1.secondName = "America";
@@ -33,7 +40,7 @@ export class DialogListComponent implements OnInit {
     message1.author = "caprica2828";
     message1.postDate = new Date("May 1, 2019 11:22:00");
     message1.text = "Видела мем про nigatony? Ор выше гор :О";
-    message1.isReaden = false;
+    message1.isRead = false;
     dialogPreview1.lastMessage = message1;
 
     var dialogPreview2 = new DialogPreview();
@@ -47,7 +54,7 @@ export class DialogListComponent implements OnInit {
     message2.author = "";
     message2.postDate = new Date("April 30, 2019 19:44:00");
     message2.text = "Мне интересно: как ты до сих пор терпишь кэпа?";
-    message2.isReaden = true;
+    message2.isRead = true;
     dialogPreview2.lastMessage = message2;
 
     var dialogPreview3 = new DialogPreview();
@@ -61,7 +68,7 @@ export class DialogListComponent implements OnInit {
     message3.author = "";
     message3.postDate = new Date("April 30, 2019 16:20:00");
     message3.text = "Я слышала ты отхватила в последнем бою... Как себя чувствуешь?";
-    message3.isReaden = false;
+    message3.isRead = false;
     dialogPreview3.lastMessage = message3;
 
     var dialogPreview4 = new DialogPreview();
@@ -75,15 +82,15 @@ export class DialogListComponent implements OnInit {
     message4.author = "crushcrushcrush";
     message4.postDate = new Date("April 30, 2019 10:58:00");
     message4.text = "КРУШИИИИИИИИИИИИИИИИИИИИИИИИИИИИИИТЬ";
-    message4.isReaden = true;
+    message4.isRead = true;
     dialogPreview4.lastMessage = message4;
 
-    this.dialogs = [
-      dialogPreview1,
-      dialogPreview2,
-      dialogPreview3,
-      dialogPreview4
-    ];
+    //this.dialogs = [
+    //  dialogPreview1,
+    //  dialogPreview2,
+    //  dialogPreview3,
+    //  dialogPreview4
+    //];
   }
 
   updateDialogsList(newValue: string) {

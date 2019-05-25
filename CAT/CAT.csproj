@@ -33,8 +33,10 @@
     <None Remove="ClientApp\src\app\user-list\user-list.component.ts" />
     <None Remove="ClientApp\src\models\dialog\dialog.ts" />
     <None Remove="ClientApp\src\models\dialog\dialogPreview.ts" />
+    <None Remove="ClientApp\src\models\dialog\emotionResult.ts" />
     <None Remove="ClientApp\src\models\dialog\message.ts" />
     <None Remove="ClientApp\src\services\dialog-service\dialog.service.ts" />
+    <None Remove="ClientApp\src\services\emotion-service\emotion.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,8 +53,10 @@
     <TypeScriptCompile Include="ClientApp\src\app\user-list\user-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\models\dialog\dialog.ts" />
     <TypeScriptCompile Include="ClientApp\src\models\dialog\dialogPreview.ts" />
+    <TypeScriptCompile Include="ClientApp\src\models\dialog\emotionResult.ts" />
     <TypeScriptCompile Include="ClientApp\src\models\dialog\message.ts" />
     <TypeScriptCompile Include="ClientApp\src\services\dialog-service\dialog.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\services\emotion-service\emotion.service.ts" />
   </ItemGroup>
 
   <ItemGroup>

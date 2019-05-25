@@ -12,6 +12,8 @@ namespace CAT.BusinessLayer.Models.Account.ResultModels
 
         public string Role { get; set; }
 
+        public string AvatarUrl { get; set; }
+
         public bool Succeeded { get; set; }
 
         public IEnumerable<IdentityError> Errors { get; set; }
@@ -31,6 +33,7 @@ namespace CAT.BusinessLayer.Models.Account.ResultModels
                 UserName = user?.UserName;
                 Role = role;
                 AccessToken = accessToken;
+                AvatarUrl = user?.AvatarUrl;
             }
         }
     }

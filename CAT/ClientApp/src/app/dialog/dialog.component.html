@@ -1,5 +1,5 @@
 <div class="chat">
-  <div class="card">
+  <div class="card" *ngIf="dialog">
     <div class="card-header msg_head">
       <div class="d-flex bd-highlight">
         <div class="back_link">
@@ -8,12 +8,12 @@
           </a>
         </div>
         <div class="user_info">
-          <span>Captain America <span class="login-span">{{name}}</span></span>
+          <span>{{dialog.name}} <span class="login-span">@{{name}}</span></span>
           <p *ngIf="dialog">{{dialog.messages.length}} Messages</p>
         </div>
         <div class="img_cont">
-          <img src="https://www.screengeek.net/wp-content/uploads/2018/09/avengers-4-captain-america.jpg" class="rounded-circle user_img">
-          <span class="online_icon"></span>
+          <img src="{{dialog.avatar}}" class="rounded-circle user_img">
+          <span class="online_icon" *ngIf="dialog.isOnline"></span>
         </div>
       </div>
     </div>
@@ -24,18 +24,34 @@
     </div>
     <div class="card-footer">
       <div class="input-group flex-nowrap">
-        <div class="input-group-append"
-             data-html="true"
-             data-toggle="popover"
-             data-placement="left"
-             attr.title="{{emotionRecognotionTitle}}"
-             attr.data-content="{{emotionRecognotion}}">
+        <div class="input-group-append" (click)="triggerPopover()">
           <span class="input-group-text attach_btn"><i class="glyphicon glyphicon-paperclip"></i></span>
         </div>
         <textarea name="" class="form-control type_msg" [(ngModel)]="messageText" placeholder="Type your message..."></textarea>
-        <div class="input-group-append">
+        <div class="input-group-append" (click)="postMessage()">
           <span class="input-group-text send_btn"><i class="glyphicon glyphicon-send"></i></span>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="popover fade show" role="tooltip" x-placement="left" *ngIf="isPopoverActive">
+  <div class="arrow" style="top: 56px;"></div>
+  <h3 class="popover-header">
+    <b>Emotion recognition</b><a id="close" class="close" (click)="hidePopover()">×</a>
+  </h3>
+  <div class="popover-body">
+    <div>
+      <webcam      [width]="200"
+                   [trigger]="triggerObservable"
+                   (imageCapture)="handleImage($event)"
+                   *ngIf="isPopoverActive"></webcam>
+      <div *ngIf="emotionResults">
+        <p>
+          Is it <b>{{getEmotionResultString()}}</b>?
+        </p><a class="btn btn-success" (click)="setEmotionResultToMessage()">Yes</a><a class="btn btn-danger" (click)="clearEmotionResult()">No</a>
       </div>
     </div>
   </div>

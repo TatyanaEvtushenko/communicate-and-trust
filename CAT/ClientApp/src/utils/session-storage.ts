@@ -2,6 +2,7 @@ export class SessionStorage {
 
   private static tokenKey: string = "accessToken";
   private static userNameKey: string = "userName";
+  private static avatarKey: string = "avatar";
   private static roleKey: string = "role";
 
   static saveToken(token: string) {
@@ -20,12 +21,24 @@ export class SessionStorage {
     sessionStorage.setItem(this.userNameKey, userName);
   }
 
+  static saveUserAvatar(avatarUrl: string) {
+    sessionStorage.setItem(this.avatarKey, avatarUrl);
+  }
+
   static getUserName(): string {
     return sessionStorage.getItem(this.userNameKey);
   }
 
   static removeUserName() {
     sessionStorage.removeItem(this.userNameKey);
+  }
+
+  static getUserAvatar(): string {
+    return sessionStorage.getItem(this.avatarKey);
+  }
+
+  static removeUserAvatar() {
+    sessionStorage.removeItem(this.avatarKey);
   }
 
   static saveRole(role: string) {
