@@ -20,8 +20,6 @@ export class SigninFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.account.login = "tumanov.97.dima@gmail.com";
-    this.account.password = "1029lokality97A!";
   }
 
   public signIn() {
