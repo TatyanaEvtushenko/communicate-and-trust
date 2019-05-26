@@ -29,7 +29,7 @@
               <span class='glyphicon glyphicon-search'></span> Search
             </a>
           </li>
-          <li [routerLinkActive]='["link-active"]'>
+          <li [routerLinkActive]='["link-active"]' *ngIf="isAdmin">
             <a [routerLink]='["/admin-page"]' (click)='collapse()'>
               <span class='glyphicon glyphicon-cog'></span> Admin
             </a>

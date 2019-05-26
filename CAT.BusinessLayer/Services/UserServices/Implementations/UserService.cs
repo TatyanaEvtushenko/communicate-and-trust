@@ -15,16 +15,17 @@ namespace CAT.BusinessLayer.Services.UserServices.Implementations
             this.userRepository = userRepository;
         }
 
-        public IEnumerable<UserListingViewModel> GetTopUsersCollection()
+        public IEnumerable<UserListingViewModel> GetTopUsersCollection(string currentUserName)
         {
             return userRepository.QueryableList().Take(10)
+                .Where(x => x.UserName != currentUserName)
                 .Select(x => new UserListingViewModel(x)).ToList();
         }
 
-        public IEnumerable<UserListingViewModel> GetUsersCollectionByString(string searchString)
+        public IEnumerable<UserListingViewModel> GetUsersCollectionByString(string currentUserName, string searchString)
         {
             return userRepository.QueryableList()
-                .Where(x => IsUserAvailable(x, searchString))
+                .Where(x => IsUserAvailable(x, searchString) && x.UserName != currentUserName)
                 .Select(x => new UserListingViewModel(x)).ToList();
         }
 

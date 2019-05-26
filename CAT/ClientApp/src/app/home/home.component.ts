@@ -4,6 +4,7 @@ import { AuthorizedUserService } from '../../services/authorized-user-service/au
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
   isVisibleAuthForm = false;

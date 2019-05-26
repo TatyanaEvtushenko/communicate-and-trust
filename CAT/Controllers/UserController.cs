@@ -17,15 +17,15 @@ namespace CAT.Controllers
         }
 
         [HttpGet("top10")]
-        public IEnumerable<UserListingViewModel> TopTenUsers()
+        public IEnumerable<UserListingViewModel> TopTenUsers(string currentUserName)
         {
-            return userService.GetTopUsersCollection();
+            return userService.GetTopUsersCollection(currentUserName);
         }
 
         [HttpGet("usersSearch")]
-        public IEnumerable<UserListingViewModel> UsersSearch(string searchString)
+        public IEnumerable<UserListingViewModel> UsersSearch(string currentUserName, string searchString)
         {
-            return userService.GetUsersCollectionByString(searchString);
+            return userService.GetUsersCollectionByString(currentUserName, searchString);
         }
     }
 }

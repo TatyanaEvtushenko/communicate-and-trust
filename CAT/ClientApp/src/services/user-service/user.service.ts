@@ -10,13 +10,13 @@ export class UserService {
     http.controllerName = 'user';
   }
 
-  getTopTenUsers(): Observable<User[]> {
+  getTopTenUsers(currentUserName: string): Observable<User[]> {
     this.http.controllerName = 'user';
-    return this.http.get('top10');
+    return this.http.get(`top10?currentUserName=${currentUserName}`);
   }
 
-  getUsersByString(searchString: string): Observable<User[]> {
-    return this.http.get(`usersSearch?searchString=${searchString}`);
+  getUsersByString(currentUserName: string, searchString: string): Observable<User[]> {
+    return this.http.get(`usersSearch?currentUserName=${currentUserName}&searchString=${searchString}`);
   }
 
 }

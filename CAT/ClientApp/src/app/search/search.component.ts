@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { User } from '../../models/user/User';
 import { UserService } from '../../services/user-service/user.service';
+import { SessionStorage } from "../../utils/session-storage";
 
 @Component({
   selector: 'search',
@@ -23,7 +24,7 @@ export class SearchComponent {
     }
 
     this.users = null;
-    this.userService.getUsersByString(newValue).subscribe(result => {
+    this.userService.getUsersByString(SessionStorage.getUserName(), newValue).subscribe(result => {
       this.users = result;
       this.searchResultActive = true;
     }, error => console.error(error));
@@ -32,7 +33,7 @@ export class SearchComponent {
   searchReset() {
     this.searchString = '';
     this.users = null;
-    this.userService.getTopTenUsers().subscribe(result => {
+    this.userService.getTopTenUsers(SessionStorage.getUserName()).subscribe(result => {
       this.users = result;
       this.searchResultActive = false;
     }, error => console.error(error));

@@ -6,9 +6,9 @@ namespace CAT.BusinessLayer.Services.UserServices
 {
     public interface IUserService
     {
-        IEnumerable<UserListingViewModel> GetTopUsersCollection();
+        IEnumerable<UserListingViewModel> GetTopUsersCollection(string currentUserName);
 
-        IEnumerable<UserListingViewModel> GetUsersCollectionByString(string searchString);
+        IEnumerable<UserListingViewModel> GetUsersCollectionByString(string currentUserName, string searchString);
 
         string GetUserIdByName(string name);
 

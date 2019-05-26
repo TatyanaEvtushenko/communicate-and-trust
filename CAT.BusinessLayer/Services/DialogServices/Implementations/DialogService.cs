@@ -41,7 +41,7 @@ namespace CAT.BusinessLayer.Services.DialogServices.Implementations
                 });    
             }
 
-            return result;
+            return result.OrderBy(x => x.LastMessage.PostDate);
         }
 
         public DialogViewModel GetDialog(string firstUserId, string secondUserId)
