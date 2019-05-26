@@ -10,12 +10,12 @@ namespace CAT.MachineLearningLayer.ConvolutionNeuralNetwork.Configurations
         private static readonly ActivationFunction ConvolutionActivationFunction = ActivationFunction.ReLu;
         private static readonly PoolingType PoolingType = PoolingType.Max;
 
-        public static ActivationFunction DenseActivationFunction = ActivationFunction.None;
+        public static ActivationFunction DenseActivationFunction = ActivationFunction.Tanh;
 
         public static IEnumerable<ConvolutionWithPoolingConfigurationModel> ConvolutionWithPoolingLayers
             = new List<ConvolutionWithPoolingConfigurationModel>
         {
-                new ConvolutionWithPoolingConfigurationModel
+                new ConvolutionWithPoolingConfigurationModel //Layer 1
                 {
                     Convolution = new ConvolutionConfigurationModel
                     {
@@ -27,14 +27,14 @@ namespace CAT.MachineLearningLayer.ConvolutionNeuralNetwork.Configurations
                     },
                     Pooling = new PoolingConfigurationModel
                     {
-                        WindowHeight = 3,
-                        WindowWidth = 3,
+                        WindowHeight = 2,
+                        WindowWidth = 2,
                         StrideByHeight = 2,
                         StrideByWidth = 2,
                         PoolingType = PoolingType
                     }
                 },
-                new ConvolutionWithPoolingConfigurationModel
+                new ConvolutionWithPoolingConfigurationModel //Layer 2
                 {
                     Convolution = new ConvolutionConfigurationModel
                     {
@@ -46,8 +46,46 @@ namespace CAT.MachineLearningLayer.ConvolutionNeuralNetwork.Configurations
                     },
                     Pooling = new PoolingConfigurationModel
                     {
-                        WindowHeight = 3,
-                        WindowWidth = 3,
+                        WindowHeight = 2,
+                        WindowWidth = 2,
+                        StrideByHeight = 2,
+                        StrideByWidth = 2,
+                        PoolingType = PoolingType
+                    }
+                },
+                new ConvolutionWithPoolingConfigurationModel  //Layer 3
+                {
+                    Convolution = new ConvolutionConfigurationModel
+                    {
+                        KernelHeight = 3,
+                        KernelWidth = 3,
+                        InputChannelsCount = 8,
+                        OutFeatureMapCount = 16,
+                        ActivationFunction = ConvolutionActivationFunction
+                    },
+                    Pooling = new PoolingConfigurationModel
+                    {
+                        WindowHeight = 2,
+                        WindowWidth = 2,
+                        StrideByHeight = 2,
+                        StrideByWidth = 2,
+                        PoolingType = PoolingType
+                    }
+                },
+                new ConvolutionWithPoolingConfigurationModel //Layer 4
+                {
+                    Convolution = new ConvolutionConfigurationModel
+                    {
+                        KernelHeight = 3,
+                        KernelWidth = 3,
+                        InputChannelsCount = 16,
+                        OutFeatureMapCount = 32,
+                        ActivationFunction = ConvolutionActivationFunction
+                    },
+                    Pooling = new PoolingConfigurationModel
+                    {
+                        WindowHeight = 2,
+                        WindowWidth = 2,
                         StrideByHeight = 2,
                         StrideByWidth = 2,
                         PoolingType = PoolingType
