@@ -11,6 +11,10 @@ h1 {
     margin: 25px 0;
   }
 
+  .list-body > p {
+    text-align: center;
+  }
+
 .input-group-text {
   font-size: 15px;
 }

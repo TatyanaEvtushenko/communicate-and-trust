@@ -22,14 +22,16 @@ import { MessageListComponent } from './message-list/message-list.component';
 import { TrainingPageComponent } from './training-page/training-page.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { SessionsComponent } from './sessions/sessions.component';
+import { AuthFormComponent } from './auth-form/auth-form.component';
 
 import { AccountService } from '../services/account-service/account.service';
 import { UserService } from '../services/user-service/user.service';
 import { DialogService } from '../services/dialog-service/dialog.service';
 import { EmotionService } from '../services/emotion-service/emotion.service';
+import { TestService } from '../services/test-service/test.service';
+import { TrainingService } from '../services/training-service/training.service';
 import { HttpService } from '../services/http-service/http.service';
 import { AuthorizedUserService } from '../services/authorized-user-service/authorized-user.service';
-import { AuthFormComponent } from './auth-form/auth-form.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { AuthFormComponent } from './auth-form/auth-form.component';
     AuthorizedUserService,
     UserService,
     DialogService,
-    EmotionService
+    EmotionService,
+    TestService,
+    TrainingService
   ],
   bootstrap: [AppComponent]
 })

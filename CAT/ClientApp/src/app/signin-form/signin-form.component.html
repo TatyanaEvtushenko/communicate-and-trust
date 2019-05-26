@@ -8,7 +8,7 @@
 </div>
 
 <p *ngIf="result != null && result.succeeded">The user is authorized!</p>
-<ul *ngIf="result != null && !result.succeeded">
+<ul *ngIf="result != null && !result.succeeded" class="errors">
   <li *ngFor="let error of result.errors">{{error.code}}: {{error.description}}</li>
 </ul>
 

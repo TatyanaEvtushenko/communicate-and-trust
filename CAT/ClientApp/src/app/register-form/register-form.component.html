@@ -34,10 +34,12 @@
     <label for="exampleInputFile">Avatar</label>
     <input type="file" id="exampleInputFile" name="file" (change)="getFiles($event)">
   </div>
+
+  <ul *ngIf="result != null && !result.succeeded" class="errors">
+    <li *ngFor="let error of result.errors">{{error.code}}: {{error.description}}</li>
+  </ul>
   <button type="submit" class="btn btn-primary">Register</button>
 </form>
 
 <p *ngIf="result != null && result.succeeded">The user was registered!</p>
-<ul *ngIf="result != null && !result.succeeded">
-  <li *ngFor="let error of result.errors">{{error.code}}: {{error.description}}</li>
-</ul>
+

@@ -8,7 +8,7 @@
       <span class="input-group-text" id="addon-wrapping"><span class='glyphicon glyphicon-search'></span></span>
     </div>
     <input type="text" class="form-control" [ngModel]="searchString" (ngModelChange)="updateUsersList($event)"
-           placeholder="Enter more than 2 symbols to search" aria-label="Search" aria-describedby="addon-wrapping">
+           placeholder="Enter something to search" aria-label="Search" aria-describedby="addon-wrapping">
     <input type="button" (click)="searchReset()" value="Reset search results" *ngIf="searchResultActive" />
   </div>
 

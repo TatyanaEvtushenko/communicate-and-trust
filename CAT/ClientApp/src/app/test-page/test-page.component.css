@@ -66,16 +66,28 @@
   position: inherit;
 }
 
-  .upload-form .card-body img {
-    position: absolute;
-    right: 0;
-    left: 0;
-    margin: auto;
-    bottom: 0;
-    top: 0;
-    max-width: 95%;
-    max-height: 95%;
+  .upload-form .card-body .upload-img {
+    width: 95%;
+    height: 95%;
   }
+
+    .upload-form .card-body .upload-img img {
+      position: absolute;
+      right: 0;
+      left: 0;
+      margin: auto;
+      bottom: 0;
+      top: 0;
+      max-width: 95%;
+      max-height: 95%;
+    }
+
+    .upload-form .card-body .upload-img .glyphicon {
+      color: #c23616;
+      position: absolute;
+      right: 1px;
+      cursor: pointer;
+    }
 
 .empty-label {
   width: 40%;
@@ -137,10 +149,18 @@
   text-align: center;
 }
 
-  .test-results-form .card-footer .valid-result {
+  .test-results-form .card-footer .valid {
     color: #4cd137;
   }
 
-  .test-results-form .card-footer .invalid-result {
+  .test-results-form .card-footer .invalid {
     color: #c23616;
   }
+
+#hiddenInput {
+  display: none;
+}
+
+.errors {
+  color: red;
+}

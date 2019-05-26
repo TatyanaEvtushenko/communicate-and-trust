@@ -3,6 +3,7 @@
     public enum TrainingSessionStatus
     {
         Success = 0,
-        Failed = 1
+        Failed = 1,
+        InProgress = 2
     }
 }

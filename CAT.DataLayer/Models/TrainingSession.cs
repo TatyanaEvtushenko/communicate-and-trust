@@ -16,6 +16,8 @@ namespace CAT.DataLayer.Models
 
         public TrainingSessionStatus Status { get; set; }
 
+        public EmotionType EmotionType { get; set; }
+
         public ICollection<TrainingSource> TrainingSources { get; set; } = new List<TrainingSource>();
 
         public ICollection<TrainingLog> TrainingLogs { get; set; } = new List<TrainingLog>();

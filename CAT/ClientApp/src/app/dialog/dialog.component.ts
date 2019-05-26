@@ -18,8 +18,9 @@ import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 export class DialogComponent implements OnInit {
   public name: string;
   public dialog: Dialog;
-  public messageText: string = "";
-  public isPopoverActive: boolean = false;
+  public messageText = "";
+  public isPopoverActive = false;
+  public isReaction = false;
   public showWebcam = false;
   public errors: WebcamInitError[] = [];
   public webcamImage: WebcamImage = null;
@@ -49,7 +50,7 @@ export class DialogComponent implements OnInit {
             this.dialogService.readAllMessages(currentUserName, this.name)
               .subscribe(result => {
                 if (result) {
-                  console.log("reaction needed");
+                  this.startReactionPopover();
                 }
               },
                 error => console.error(error));
@@ -157,31 +158,41 @@ export class DialogComponent implements OnInit {
     //this.dialog.isOnline = true;
   }
 
-  postMessage() {
+  postMessage(text: string, isReaction: boolean) {
     var message = new Message();
     message.author = SessionStorage.getUserName();
     message.to = this.name;
     message.postDate = new Date(Date.now());
-    message.text = this.messageText;
-    message.isReaction = false;
+    message.text = text;
+    message.isReaction = isReaction;
     this.dialogService.postMessage(message).subscribe((data: boolean) => {
       if (!data) {
         return;
       }
-      message.avatarUrl = SessionStorage.getUserAvatar();
-      message.author = "";
-      this.messageText = "";
-      this.dialog.messages.push(message);
     });
+    message.avatarUrl = SessionStorage.getUserAvatar();
+    message.author = "";
+    this.messageText = "";
+    this.dialog.messages.push(message);
   }
 
-  triggerPopover() {
+  startReactionPopover() {
+    this.isReaction = true;
+    this.triggerPopover(1000);
+    setTimeout(() => {
+      this.postMessage(this.getEmojiesText(), true);
+      this.hidePopover();
+      this.isReaction = false;
+    }, 7000);
+  }
+
+  triggerPopover(milliseconds: number) {
     this.isPopoverActive = !this.isPopoverActive;
 
     if (this.isPopoverActive) {
       this.interval = setInterval(() => {
         this.trigger.next();
-      }, 3000);
+      }, milliseconds);
     } else {
       clearInterval(this.interval);
       this.emotionResults = null;
@@ -211,9 +222,16 @@ export class DialogComponent implements OnInit {
   }
 
   setEmotionResultToMessage() {
-    let emotions = this.emotionResults.emotionStrings.map(x => this.emotionService.mapEmotion(x)).join();
-    this.messageText = this.messageText + emotions;
+    this.messageText = this.messageText + this.getEmojiesText();
     this.hidePopover();
+  }
+
+  getEmojiesText() {
+    if (!this.emotionResults) {
+      return this.emotionService.mapEmotion("neutral");
+    }
+
+    return this.emotionResults.emotionStrings.map(x => this.emotionService.mapEmotion(x)).join();
   }
 
   clearEmotionResult() {

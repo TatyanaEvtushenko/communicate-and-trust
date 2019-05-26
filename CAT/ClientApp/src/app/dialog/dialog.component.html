@@ -24,11 +24,13 @@
     </div>
     <div class="card-footer">
       <div class="input-group flex-nowrap">
-        <div class="input-group-append" (click)="triggerPopover()">
+        <div class="input-group-append" (click)="triggerPopover(3000)">
           <span class="input-group-text attach_btn"><i class="glyphicon glyphicon-paperclip"></i></span>
         </div>
-        <textarea name="" class="form-control type_msg" [(ngModel)]="messageText" placeholder="Type your message..."></textarea>
-        <div class="input-group-append" (click)="postMessage()">
+        <textarea name="" class="form-control type_msg"
+                  [(ngModel)]="messageText" (keyup.enter)="postMessage(messageText, false)"
+                  placeholder="Type your message..."></textarea>
+        <div class="input-group-append" (click)="postMessage(messageText, false)">
           <span class="input-group-text send_btn"><i class="glyphicon glyphicon-send"></i></span>
         </div>
       </div>
@@ -40,7 +42,7 @@
 <div class="popover fade show" role="tooltip" x-placement="left" *ngIf="isPopoverActive">
   <div class="arrow" style="top: 56px;"></div>
   <h3 class="popover-header">
-    <b>Emotion recognition</b><a id="close" class="close" (click)="hidePopover()">×</a>
+    <b>Emotion recognition</b><a id="close" class="close" (click)="hidePopover()" *ngIf="!isReaction">×</a>
   </h3>
   <div class="popover-body">
     <div>
@@ -48,10 +50,13 @@
                    [trigger]="triggerObservable"
                    (imageCapture)="handleImage($event)"
                    *ngIf="isPopoverActive"></webcam>
-      <div *ngIf="emotionResults">
+      <div *ngIf="emotionResults && !isReaction">
         <p>
           Is it <b>{{getEmotionResultString()}}</b>?
         </p><a class="btn btn-success" (click)="setEmotionResultToMessage()">Yes</a><a class="btn btn-danger" (click)="clearEmotionResult()">No</a>
+      </div>
+      <div *ngIf="emotionResults && isReaction">
+        Your reaction (<b>{{getEmotionResultString()}}</b>) will be sent in 5 seconds
       </div>
     </div>
   </div>

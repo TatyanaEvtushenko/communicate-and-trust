@@ -184,3 +184,27 @@
   .logs-form .card-body p {
     margin: 0 0 5px;
   }
+
+#hiddenInput {
+  display: none;
+}
+
+.errors {
+  color: red;
+}
+
+.error-card {
+  margin-top: 20px; 
+}
+
+.error-card .card-header {
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+}
+
+.loader {
+  font-size: 16px;
+  text-align: center;
+  font-weight: 700;
+}

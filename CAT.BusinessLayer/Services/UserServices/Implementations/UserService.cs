@@ -40,8 +40,11 @@ namespace CAT.BusinessLayer.Services.UserServices.Implementations
 
         private bool IsUserAvailable(User user, string searchString)
         {
-            return user.UserName.Contains(searchString) ||
-                   $"{user.FirstName} {user.SecondName}".Contains(searchString);
+            var userName = user.UserName.ToLower();
+            var fullName = $"{user.FirstName} {user.SecondName}".ToLower();
+            var search = searchString.ToLower();
+
+            return userName.Contains(search) || fullName.Contains(search);
         }
     }
 }

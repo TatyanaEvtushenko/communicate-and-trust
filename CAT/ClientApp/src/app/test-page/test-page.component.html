@@ -2,13 +2,23 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="card upload-form">
+        <webcam      [width]="0"
+                     [height]="0"
+                     [trigger]="triggerObservable"
+                     (imageCapture)="handleImage($event)"
+                     style="position: absolute"
+                     *ngIf="isWebcamToggled"></webcam>
         <div class="card-body">
-          <img [src]="source" *ngIf="source != ''"/>
+          <div class="upload-img" *ngIf="source != ''">
+            <img [src]="source"/>
+            <span class="glyphicon glyphicon-remove" (click)="clearImage()" *ngIf="!isStart"></span>
+          </div>
           <div class="empty-label" *ngIf="source == ''">
             <span class="glyphicon-text">You can</span>
-            <a class="btn btn-primary">Take snapshot <span class="glyphicon glyphicon-camera" aria-hidden="true"></span></a>
+            <a class="btn btn-primary" (click)="toggleWebcamAndTakeSnapshot()">Take snapshot <span class="glyphicon glyphicon-camera" aria-hidden="true"></span></a>
             <span class="glyphicon-text">or browse your</span>
-            <a class="btn btn-primary">Local files <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+            <a class="btn btn-primary" onclick="$('#hiddenInput').click()">Local files <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+            <input type="file" id="hiddenInput" (change)="getFiles($event)">
           </div>
         </div>
       </div>
@@ -19,66 +29,72 @@
         <div class="card-body">
           <h5 class="card-title">Select valid emotion type of uploaded image</h5>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="emotions" id="angry" value="angry">
-            <label class="form-check-label" for="angry">Angry</label>
+            <input class="form-check-input" type="radio" name="emotions" id="anger" value="anger" (click)="selectEmotion('anger')">
+            <label class="form-check-label" for="angry">Anger</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="emotions" id="contempt" value="contempt">
+            <input class="form-check-input" type="radio" name="emotions" id="contempt" value="contempt" (click)="selectEmotion('contempt')">
             <label class="form-check-label" for="contempt">Contempt</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="emotions" id="fear" value="fear">
+            <input class="form-check-input" type="radio" name="emotions" id="fear" value="fear" (click)="selectEmotion('fear')">
             <label class="form-check-label" for="fear">Fear</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="emotions" id="sadness" value="sadness">
+            <input class="form-check-input" type="radio" name="emotions" id="sadness" value="sadness" (click)="selectEmotion('sadness')">
             <label class="form-check-label" for="sadness">Sadness</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="emotions" id="happiness" value="happiness">
+            <input class="form-check-input" type="radio" name="emotions" id="happiness" value="happiness" (click)="selectEmotion('happiness')">
             <label class="form-check-label" for="happiness">Happiness</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="emotions" id="disgust" value="disgust">
+            <input class="form-check-input" type="radio" name="emotions" id="disgust" value="disgust" (click)="selectEmotion('disgust')">
             <label class="form-check-label" for="disgust">Disgust</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="emotions" id="surprise" value="surprise">
+            <input class="form-check-input" type="radio" name="emotions" id="surprise" value="surprise" (click)="selectEmotion('surprise')">
             <label class="form-check-label" for="surprise">Surprise</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="emotions" id="neutral" value="neutral">
+            <input class="form-check-input" type="radio" name="emotions" id="neutral" value="neutral" (click)="selectEmotion('neutral')">
             <label class="form-check-label" for="neutral">Neutral</label>
           </div>
         </div>
         <div class="card-footer" *ngIf="!isStart">
-          <a class="btn btn-primary" (click)="clickIsStart()">START</a>
+          <a class="btn btn-primary" (click)="start()">START</a>
         </div>
         <div class="card-footer" *ngIf="isStart">
-          <a class="btn btn-primary">RESET</a>
+          <a class="btn btn-primary" (click)="reset()">RESET</a>
         </div>
       </div>
       <div class="card test-results-form">
         <h5 class="card-header">Test results</h5>
-        <div class="card-body" *ngIf="isStart">
-          <p>Valid result is: <b>SURPRISE</b>.</p>
+        <div class="card-body" *ngIf="isStart && testResult">
+          <p>Valid result is: <b>{{testResult.selectedEmotion}}</b>.</p>
           <p>Neural network recognition results:</p>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Angry <span class="recognition-percent">2.957%</span></li>
-            <li class="list-group-item">Contempt <span class="recognition-percent">0.735%</span></li>
-            <li class="list-group-item">Fear <span class="recognition-percent">14.184%</span></li>
-            <li class="list-group-item">Sadness <span class="recognition-percent">0.041%</span></li>
-            <li class="list-group-item">Happiness <span class="recognition-percent">3.019%</span></li>
-            <li class="list-group-item">Disgust <span class="recognition-percent">1.193%</span></li>
-            <li class="list-group-item valid">Surprise <span class="recognition-percent">63.825%</span></li>
-            <li class="list-group-item">Neutral <span class="recognition-percent">0.017%</span></li>
+            <li class="list-group-item" [ngClass]="getClass('anger')">Anger <span class="recognition-percent">{{getValue(testResult.emotions.anger)|number:'1.1-1'}}%</span></li>
+            <li class="list-group-item" [ngClass]="getClass('contempt')">Contempt <span class="recognition-percent">{{getValue(testResult.emotions.contempt)|number:'1.1-1'}}%</span></li>
+            <li class="list-group-item" [ngClass]="getClass('fear')">Fear <span class="recognition-percent">{{getValue(testResult.emotions.fear)|number:'1.1-1'}}%</span></li>
+            <li class="list-group-item" [ngClass]="getClass('sadness')">Sadness <span class="recognition-percent">{{getValue(testResult.emotions.sadness)|number:'1.1-1'}}%</span></li>
+            <li class="list-group-item" [ngClass]="getClass('happiness')">Happiness <span class="recognition-percent">{{getValue(testResult.emotions.happiness)|number:'1.1-1'}}%</span></li>
+            <li class="list-group-item" [ngClass]="getClass('disgust')">Disgust <span class="recognition-percent">{{getValue(testResult.emotions.disgust)|number:'1.1-1'}}%</span></li>
+            <li class="list-group-item" [ngClass]="getClass('surprise')">Surprise <span class="recognition-percent">{{getValue(testResult.emotions.surprise)|number:'1.1-1'}}%</span></li>
+            <li class="list-group-item" [ngClass]="getClass('neutral')">Neutral <span class="recognition-percent">{{getValue(testResult.emotions.neutral)|number:'1.1-1'}}%</span></li>
           </ul>
+        </div>
+        <div class="card-body" *ngIf="isStart && !testResult">
+          <p><i>Loading...</i></p>
         </div>
         <div class="card-body" *ngIf="!isStart">
           <p>Please upload an image and select an emotion type displayed on image to start testing emotion recognition model.</p>
+          <div class="errors" *ngIf="isError">
+            <p>{{errorMessage}}</p>
+          </div>
         </div>
-        <div class="card-footer" *ngIf="isStart">
-          <h4>Recognition is: <span class="valid-result">VALID</span></h4>
+        <div class="card-footer" *ngIf="isStart && testResult">
+          <h4>Recognition is: <span [ngClass]="getClass(testResult.resultEmotion)">{{testResult.selectedEmotion == testResult.resultEmotion ? "VALID" : "INVALID"}}</span></h4>
         </div>
       </div>
     </div>

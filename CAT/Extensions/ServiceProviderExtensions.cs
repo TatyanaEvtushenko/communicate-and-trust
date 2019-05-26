@@ -9,6 +9,10 @@ using CAT.BusinessLayer.Services.MessageServices;
 using CAT.BusinessLayer.Services.MessageServices.Implementations;
 using CAT.BusinessLayer.Services.SmileServices;
 using CAT.BusinessLayer.Services.SmileServices.Interfaces;
+using CAT.BusinessLayer.Services.TestServices;
+using CAT.BusinessLayer.Services.TestServices.Implementations;
+using CAT.BusinessLayer.Services.TrainingServices;
+using CAT.BusinessLayer.Services.TrainingServices.Implementations;
 using CAT.BusinessLayer.Services.UserServices;
 using CAT.BusinessLayer.Services.UserServices.Implementations;
 using CAT.DataLayer.Models;
@@ -32,6 +36,8 @@ namespace CAT.Extensions
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDialogService, DialogService>();
             services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<ITestService, TestService>();
+            services.AddScoped<ITrainingService, TrainingService>();
         }
 
         public static void AddProjectUtils(this IServiceCollection services)
@@ -44,6 +50,8 @@ namespace CAT.Extensions
             services.AddScoped<IDatabaseRepository<User>, UserRepository>();
             services.AddScoped<IDatabaseRepository<Dialog>, DialogRepository>();
             services.AddScoped<IDatabaseRepository<Message>, MessageRepository>();
+            services.AddScoped<IDatabaseRepository<TestSession>, TestRepository>();
+            services.AddScoped<IDatabaseRepository<TrainingSession>, TrainingRepository>();
         }
 
         public static void AddProjectOptions(this IServiceCollection services, IConfiguration configuration)
