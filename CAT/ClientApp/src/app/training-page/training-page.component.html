@@ -87,11 +87,10 @@
     <div class="col-sm-12">
       <div class="progress-title">
         <span class="start-time">Start time: <i>{{trainingResults.startDate | date:'medium'}}</i></span>
-        <span class="end-time">Will be finished in <i>{{getEndDate()}}</i></span>
       </div>
       <div class="progress">
-        <div class="progress-bar" role="progressbar" attr.aria-valuenow="trainingResults.percents" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':trainingResults.percents+'%'}"></div>
-        <span class="progress-bar-title">{{trainingResults.percents}}%</span>
+        <div class="progress-bar" role="progressbar" attr.aria-valuenow="trainingResults.percents" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':(trainingResults.percents > 100 ? '100' : trainingResults.percents)+'%'}"></div>
+        <span class="progress-bar-title">{{trainingResults.percents > 100 ? '100' : trainingResults.percents}}%</span>
       </div>
     </div>
   </div>

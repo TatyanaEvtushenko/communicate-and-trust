@@ -16,14 +16,16 @@ namespace CAT.DataLayer.Repositories.DatabaseRepositories
         {
             var entity = DbContext.Dialogs
                 .Include(x => x.UserDialogs).ThenInclude(x => x.User)
-                .Include(x => x.Messages)
+                .Include(x => x.Messages).ThenInclude(x => x.Sender)
                 .FirstOrDefault(predicate);
             return entity;
         }
 
         public override IQueryable<Dialog> QueryableList()
         {
-            return DbContext.Dialogs.Include(x => x.UserDialogs).ThenInclude(x => x.User).Include(x => x.Messages);
+            return DbContext.Dialogs
+                .Include(x => x.UserDialogs).ThenInclude(x => x.User)
+                .Include(x => x.Messages).ThenInclude(x => x.Sender);
         }
     }
 }

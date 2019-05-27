@@ -17,6 +17,7 @@ using CAT.BusinessLayer.Services.TrainingServices;
 using CAT.BusinessLayer.Services.TrainingServices.Implementations;
 using CAT.BusinessLayer.Services.UserServices;
 using CAT.BusinessLayer.Services.UserServices.Implementations;
+using CAT.BusinessLayer.Utils;
 using CAT.DataLayer.Models;
 using CAT.DataLayer.Repositories.DatabaseRepositories;
 using CAT.DataLayer.Repositories.DatabaseRepositories.Interfaces;
@@ -41,6 +42,7 @@ namespace CAT.Extensions
             services.AddScoped<ITestService, TestService>();
             services.AddScoped<ITrainingService, TrainingService>();
             services.AddScoped<ISessionService, SessionService>();
+            services.AddHostedService<TimedHostedService>();
         }
 
         public static void AddProjectUtils(this IServiceCollection services)
@@ -55,6 +57,7 @@ namespace CAT.Extensions
             services.AddScoped<IDatabaseRepository<Message>, MessageRepository>();
             services.AddScoped<IDatabaseRepository<TestSession>, TestRepository>();
             services.AddScoped<IDatabaseRepository<TrainingSession>, TrainingRepository>();
+            services.AddScoped<IDatabaseRepository<TrainingLog>, TrainingLogRepository>();
         }
 
         public static void AddProjectOptions(this IServiceCollection services, IConfiguration configuration)

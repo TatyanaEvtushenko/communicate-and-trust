@@ -19,7 +19,7 @@ export class SearchComponent {
 
   updateUsersList(newValue: string) {
     this.searchString = newValue;
-    if (newValue.length > 0) {
+    if (newValue.length == 0) {
       return;
     }
 
