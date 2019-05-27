@@ -30,6 +30,7 @@ import { DialogService } from '../services/dialog-service/dialog.service';
 import { EmotionService } from '../services/emotion-service/emotion.service';
 import { TestService } from '../services/test-service/test.service';
 import { TrainingService } from '../services/training-service/training.service';
+import { SessionService } from '../services/session-service/session.service';
 import { HttpService } from '../services/http-service/http.service';
 import { AuthorizedUserService } from '../services/authorized-user-service/authorized-user.service';
 
@@ -76,7 +77,8 @@ import { AuthorizedUserService } from '../services/authorized-user-service/autho
     DialogService,
     EmotionService,
     TestService,
-    TrainingService
+    TrainingService,
+    SessionService
   ],
   bootstrap: [AppComponent]
 })

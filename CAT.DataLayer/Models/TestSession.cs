@@ -18,6 +18,8 @@ namespace CAT.DataLayer.Models
 
         public bool IsValid { get; set; }
 
+        public string Source { get; set; }
+
         public ICollection<TestLog> TestLogs { get; set; } = new List<TestLog>();
     }
 }

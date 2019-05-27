@@ -36,3 +36,7 @@
 .invalid-result {
   color: #c23616;
 }
+
+a {
+  cursor: pointer;
+}

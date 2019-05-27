@@ -1,58 +1,27 @@
 <div class="row body-row">
   <div class="row">
     <div class="col-sm-12">
-      <div class="card">
+      <div class="card" *ngFor="let session of sessions">
         <div class="card-header">
-          Train session
-          <span class="start-time">Time of start: May 1, 2019, 11:56:00</span>
+          {{session.isTest ? 'Test session' : 'Train session' }}
+          <span class="start-time">Time of start: {{session.startDate|date:'medium'}}</span>
         </div>
-        <div class="card-body">
-          <p class="card-text">New sources count: <i>8</i></p>
-          <p class="card-text">Emotion type: <i><b>SURPRISE</b></i></p>
-          <p class="card-text">Overall time of session: <i>3h 12m</i></p>
-          <p class="card-text">Train logs: <i>Open logs in a new window</i></p>
+        <div class="card-body" *ngIf="!session.isTest">
+          <p class="card-text">New sources count: <i>{{session.sources.length}}</i></p>
+          <p class="card-text">Emotion type: <i><b>{{session.selectedEmotionType.toUpperCase()}}</b></i></p>
+          <p class="card-text">Overall time of session: <i>{{getOverall(session)}}</i></p>
+          <p class="card-text">Train logs: <a (click)="openLogs(session.logs)"><i>Open logs in a new window</i></a></p>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Test session
-          <span class="start-time">May 1, 2019, 11:42:00</span>
+        <div class="card-body" *ngIf="session.isTest">
+          <p class="card-text">Expected result: <i><b>{{session.selectedEmotionType.toUpperCase()}}</b></i></p>
+          <p class="card-text">Recognition result: <i><b>{{session.returnedEmotionType.toUpperCase()}}</b></i></p>
+          <p class="card-text">Source image: <a (click)="openSource(session.sources[0])"><i>Open source image in a new window</i></a></p>
         </div>
-        <div class="card-body">
-          <p class="card-text">Expected result: <i><b>SURPRISE</b></i></p>
-          <p class="card-text">Recognition result: <i><b>HAPPINESS</b></i></p>
-          <p class="card-text">Source image: <i>Open source image in a new window</i></p>
-        </div>
-        <div class="card-footer text-muted">
-          Test result: <span class="invalid-result">INVALID</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Test session
-          <span class="start-time">May 1, 2019, 11:38:00</span>
-        </div>
-        <div class="card-body">
-          <p class="card-text">Expected result: <i><b>SURPRISE</b></i></p>
-          <p class="card-text">Recognition result: <i><b>SURPRISE</b></i></p>
-          <p class="card-text">Source image: <i>Open source image in a new window</i></p>
-        </div>
-        <div class="card-footer text-muted">
-          Test result: <span class="valid-result">VALID</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Test session
-          <span class="start-time">May 1, 2019, 11:35:00</span>
-        </div>
-        <div class="card-body">
-          <p class="card-text">Expected result: <i><b>SURPRISE</b></i></p>
-          <p class="card-text">Recognition result: <i><b>FEAR</b></i></p>
-          <p class="card-text">Source image: <i>Open source image in a new window</i></p>
-        </div>
-        <div class="card-footer text-muted">
-          Test result: <span class="invalid-result">INVALID</span>
+        <div class="card-footer text-muted" *ngIf="session.isTest">
+          Test result:
+          <span [ngClass]="session.selectedEmotionType == session.returnedEmotionType ? 'valid-result' : 'invalid-result'">
+            {{session.selectedEmotionType == session.returnedEmotionType ? 'VALID' : 'INVALID'}}
+          </span>
         </div>
       </div>
     </div>

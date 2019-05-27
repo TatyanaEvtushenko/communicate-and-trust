@@ -13,7 +13,10 @@ namespace CAT.DataLayer.Repositories.DatabaseRepositories
 
         public override IQueryable<TrainingSession> QueryableList()
         {
-            return DbContext.TrainingSessions.Include(x => x.TrainingSources).Include(x => x.TrainingLogs);
+            return DbContext.TrainingSessions
+                .Include(x => x.TrainingSources)
+                .Include(x => x.TrainingLogs)
+                .Include(x => x.User);
         }
     }
 }

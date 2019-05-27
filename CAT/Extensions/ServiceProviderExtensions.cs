@@ -7,6 +7,8 @@ using CAT.BusinessLayer.Services.ImageStoreServices;
 using CAT.BusinessLayer.Services.ImageStoreServices.Implementations;
 using CAT.BusinessLayer.Services.MessageServices;
 using CAT.BusinessLayer.Services.MessageServices.Implementations;
+using CAT.BusinessLayer.Services.SessionServices;
+using CAT.BusinessLayer.Services.SessionServices.Implementations;
 using CAT.BusinessLayer.Services.SmileServices;
 using CAT.BusinessLayer.Services.SmileServices.Interfaces;
 using CAT.BusinessLayer.Services.TestServices;
@@ -38,6 +40,7 @@ namespace CAT.Extensions
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<ITestService, TestService>();
             services.AddScoped<ITrainingService, TrainingService>();
+            services.AddScoped<ISessionService, SessionService>();
         }
 
         public static void AddProjectUtils(this IServiceCollection services)

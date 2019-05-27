@@ -25,7 +25,8 @@ namespace CAT.BusinessLayer.Services.TestServices.Implementations
                 Type = EmotionUtil.GetEmotionType(model.SelectedEmotion),
                 StartDate = DateTime.Now,
                 User = currentUser,
-                TestLogs = new List<TestLog>()
+                TestLogs = new List<TestLog>(),
+                Source = model.Source
             };
             testRepository.Add(session);
         }

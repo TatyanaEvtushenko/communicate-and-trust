@@ -35,11 +35,13 @@
     <None Remove="ClientApp\src\models\dialog\dialogPreview.ts" />
     <None Remove="ClientApp\src\models\dialog\emotionResult.ts" />
     <None Remove="ClientApp\src\models\dialog\message.ts" />
+    <None Remove="ClientApp\src\models\session\session.ts" />
     <None Remove="ClientApp\src\models\test\test-result.ts" />
     <None Remove="ClientApp\src\models\training-setup.ts" />
     <None Remove="ClientApp\src\models\training\training-results.ts" />
     <None Remove="ClientApp\src\services\dialog-service\dialog.service.ts" />
     <None Remove="ClientApp\src\services\emotion-service\emotion.service.ts" />
+    <None Remove="ClientApp\src\services\session-service\session.service.ts" />
     <None Remove="ClientApp\src\services\test-service\test.service.ts" />
     <None Remove="ClientApp\src\services\training-service\training.service.ts" />
   </ItemGroup>
@@ -60,11 +62,13 @@
     <TypeScriptCompile Include="ClientApp\src\models\dialog\dialogPreview.ts" />
     <TypeScriptCompile Include="ClientApp\src\models\dialog\emotionResult.ts" />
     <TypeScriptCompile Include="ClientApp\src\models\dialog\message.ts" />
+    <TypeScriptCompile Include="ClientApp\src\models\session\session.ts" />
     <TypeScriptCompile Include="ClientApp\src\models\test\test-result.ts" />
     <TypeScriptCompile Include="ClientApp\src\models\training\training-results.ts" />
     <TypeScriptCompile Include="ClientApp\src\models\training\training-setup.ts" />
     <TypeScriptCompile Include="ClientApp\src\services\dialog-service\dialog.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\services\emotion-service\emotion.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\services\session-service\session.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\services\test-service\test.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\services\training-service\training.service.ts" />
   </ItemGroup>
